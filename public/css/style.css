@@ -1,0 +1,1037 @@
+html, body {
+    background: #F5F6FA;
+}
+
+:root {
+    background: #F5F6FA;
+    --bg: #F5F6FA;
+    --black: #0f0f0f;
+    --green: #2e7d32;
+    --gray-btn: #e3e5ea;
+    --radius-xl: 28px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: var(--black);
+}
+
+/* ================= HEADER ================= */
+.site-header {
+    padding: 18px 0;
+    background: #fff;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo strong {
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.logo span {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: #777;
+}
+
+.main-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #000;
+}
+
+.btn-primary-pill {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+/* ================= HERO ================= */
+.hero-section {
+    background: var(--bg);
+    padding: 80px 0;
+}
+
+.hero-title {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+}
+
+.hero-badge {
+    background: #000;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 18px;
+    margin-left: 80px;
+}
+
+.green {
+    color: var(--green);
+    font-weight: 700;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-green {
+    background: var(--green);
+    color: #fff;
+    border: none;
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.btn-gray {
+    background: var(--gray-btn);
+    border: none;
+    padding: 16px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.hero-image {
+    max-width: 100%;
+}
+
+/* ================= FOR WHO ================= */
+.for-who {
+    background: var(--bg);
+    padding: 100px 0;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 48px;
+}
+
+.who-card {
+    background: #fff;
+    border-radius: var(--radius-xl);
+    padding: 28px;
+    font-size: 15px;
+    line-height: 1.4;
+    height: 100%;
+}
+
+.who-card:hover {
+    background: #000;
+    color: #3ddc84;
+}
+
+/* ================= ADAPTIVE ================= */
+@media (max-width: 991px) {
+    .main-nav {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 34px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+/* ================= COURSES ================= */
+.courses-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.course-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: #f1f2f5;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #000;
+    color: #fff;
+}
+
+.course-card {
+    position: relative;
+    background: #f6f7f9;
+    border-radius: 28px;
+    padding: 28px;
+    min-height: 220px;
+    overflow: hidden;
+}
+
+.course-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.course-tags span {
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.course-tags.dark span {
+    background: #000;
+    color: #fff;
+}
+
+.course-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    max-width: 70%;
+    margin-bottom: 20px;
+}
+
+.course-link {
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+}
+
+.course-image {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #000;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.courses-more {
+    margin-top: 48px;
+    text-align: center;
+}
+
+.btn-gray-pill {
+    background: #f1f2f5;
+    border: none;
+    padding: 14px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+/* ================= ADAPTIVE ================= */
+@media (max-width: 768px) {
+    .course-card h3 {
+        max-width: 100%;
+    }
+
+    .course-image {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* меняется под макет */
+    gap: 24px;
+    padding: 80px 0;
+}
+
+.video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+}
+
+/* фиксируем пропорции (ВАЖНО для 1:1) */
+.video-card::before {
+    content: "";
+    display: block;
+    padding-top: 62.5%; /* 16:10 — поменяй если в Figma другое */
+}
+
+.preview-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+.video-card:hover .preview-video {
+    transform: scale(1.05);
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0)
+    );
+
+    color: #fff;
+}
+
+.video-overlay h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+}
+
+.video-overlay p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.course-card {
+    position: relative;
+    height: 100%;
+    padding: 32px;
+    border-radius: 20px;
+    background: #0e0e0e;
+    color: #fff;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* контент поверх видео */
+.course-content {
+    position: relative;
+    z-index: 2;
+}
+
+.course-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.course-tags span {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.course-tags.dark span {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.course-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.course-link {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.course-link:hover {
+    opacity: 1;
+}
+
+/* ===== VIDEO ===== */
+
+.course-media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.course-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.2)
+    );
+}
+
+.course-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.4s ease;
+}
+
+.course-card:hover video {
+    transform: scale(1.05);
+}
+
+/* HOW LEARNING - 3+center+2 layout */
+.how-learning-section .section-title {
+    font-size: 3.2rem;
+    line-height: 1.05;
+    font-weight: 800;
+}
+
+.central-image-wrapper {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.yellow-frame {
+    border: 5px solid #ffc107; /* жовта рамка */
+    border-radius: 28px;
+    overflow: hidden;
+    background: #000;
+    padding: 16px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+}
+
+.central-img {
+    border-radius: 18px;
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 3 / 4; /* вертикальне фото, як на скріні */
+    object-fit: cover;
+}
+
+/* Папірці */
+.feature-card.paper-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px 20px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.feature-card.paper-card:hover {
+    transform: translateY(-10px) rotate(1.5deg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.dark-card {
+    background: #0a0a0a;
+    color: #ffffff;
+}
+
+.card-number {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.card-logo {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin-bottom: 1rem;
+    color: #000;
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.card-icon.small {
+    font-size: 2.8rem;
+}
+
+.card-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    margin: 0;
+}
+
+/* Адаптив */
+@media (max-width: 991.98px) {
+    .how-learning-section .section-title {
+        font-size: 2.6rem;
+    }
+
+    .central-image-wrapper {
+        max-width: 420px;
+    }
+
+    .yellow-frame {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .feature-card {
+        padding: 20px 16px;
+    }
+
+    .card-logo, .card-icon {
+        font-size: 2.8rem;
+    }
+}
+
+.tg-logo {
+    height: 48px;
+    width: 48px;
+}
+
+/* ================= GARANTIA SECTION ================= */
+.garantia-section {
+    background: var(--bg); /* ваш світло-сірий фон #f5f6f8 */
+    padding: 100px 0;
+}
+
+.garantia-card {
+    background: #f8f9fa; /* трохи світліший сірий, як на скріні */
+    border: 1px solid #e0e0e0;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.garantia-title {
+    font-size: 38px;
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--black);
+}
+
+.garantia-card p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #333;
+}
+
+@media (max-width: 991px) {
+    .garantia-title {
+        font-size: 32px;
+    }
+
+    .garantia-card {
+        padding: 32px 24px !important;
+    }
+
+    img {
+        max-height: 320px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .garantia-title {
+        font-size: 28px;
+    }
+
+    .garantia-card p {
+        font-size: 15px;
+    }
+}
+
+/* ================= BONUSES SECTION ================= */
+.bonuses-section .section-title {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.bonus-card {
+    background: #f8f9fa;
+    border-radius: 24px;
+    padding: 32px 20px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bonus-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.bonus-icon-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.bonus-icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.check-badge {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.bonus-title {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bonus-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Адаптив */
+@media (max-width: 991px) {
+    .bonuses-section .section-title {
+        font-size: 36px;
+    }
+    .bonus-card {
+        padding: 28px 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .bonus-icon-wrapper {
+        width: 90px;
+        height: 90px;
+    }
+    .bonus-title {
+        font-size: 18px;
+    }
+}
+.bonus-img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+    z-index: 1;
+    overflow: hidden;
+
+}
+
+
+/* ================= FAQ SECTION ================= */
+.faq-section .section-title {
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.faq-item {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-question {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+    /*color: var(--green);*/
+}
+
+.faq-question h5 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.faq-toggle {
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+.faq-item .collapse.show + .faq-question .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-answer p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    margin: 0;
+}
+
+/* Коли відкрито — жирніший текст або акцент */
+.faq-item .collapse.show .faq-question h5 {
+    font-size: 20px;
+}
+
+/* Адаптив */
+@media (max-width: 991px) {
+    .faq-section .section-title {
+        font-size: 36px;
+    }
+    .faq-question h5 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .faq-question h5 {
+        font-size: 17px;
+    }
+    .faq-answer p {
+        font-size: 15px;
+    }
+}
+
+/* ================= CONSULTATION WHITE VERSION ================= */
+.consultation-white {
+    padding: 100px 0 120px;
+}
+
+.consultation-white h2 {
+    font-size: 3.4rem;
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.phone-wrapper {
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.phone-frame {
+    background: #000;
+    border-radius: 48px;
+    padding: 12px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+}
+
+.phone-img {
+    border-radius: 36px;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Форма */
+.consult-form .form-control {
+    background: #f8f9fa;
+    border: 1px solid #d0d0d0;
+    border-radius: 12px;
+    height: 58px;
+    font-size: 1.05rem;
+    padding: 0 20px;
+    color: #333;
+}
+
+.consult-form .form-control::placeholder {
+    color: #999;
+}
+
+.consult-form .form-control:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.08);
+    outline: none;
+}
+
+.consult-form .form-check-input {
+    border: 1px solid #999;
+}
+
+.consult-form .form-check-input:checked {
+    background-color: #000;
+    border-color: #000;
+}
+
+.btn-send {
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 18px 32px;
+    font-size: 1.25rem;
+    height: 64px;
+    transition: all 0.25s ease;
+}
+
+.btn-send:hover {
+    background: #111;
+    transform: translateY(-2px);
+}
+
+.arrow {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+/* Адаптив */
+@media (max-width: 991px) {
+    .consultation-white h2 {
+        font-size: 2.8rem;
+    }
+    .phone-frame {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .consult-form .form-control {
+        height: 54px;
+        font-size: 1rem;
+    }
+    .btn-send {
+        font-size: 1.1rem;
+        padding: 16px 24px;
+        height: 58px;
+    }
+}
+.my-border{
+    border: 1px dotted black;
+}
+
+
+/* ================= FOOTER ================= */
+.site-footer {
+    background: #000;
+    color: #ddd;
+    font-size: 15px;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.instagram-preview {
+    background: #111;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.instagram-icon img {
+    border-radius: 12px;
+}
+
+.instagram-grid img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 1px solid #222;
+}
+
+.btn-pay {
+    background: #fff;
+    color: #000;
+    border: none;
+    font-size: 1.1rem;
+    transition: all 0.25s;
+}
+
+.btn-pay:hover {
+    background: #eee;
+    transform: translateY(-3px);
+}
+
+.payment-methods img {
+    /*filter: brightness(0) invert(1); !* робить іконки білими *!*/
+    /*opacity: 0.9;*/
+}
+
+.language-switcher .btn {
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 14px;
+}
+
+.language-switcher .active {
+    background: #fff;
+    color: #000;
+}
+
+/* Адаптив */
+@media (max-width: 991px) {
+    .footer-links {
+        columns: 2;
+    }
+    .instagram-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .payment-methods img {
+        width: 36px;
+    }
+    .btn-pay {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+.free-consult-section {
+    background: #f8f9fa;
+}
+
+.consult-wrapper {
+    border: 1px solid #e0e0e0;
+}
+
+.consult-wrapper h2 {
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.consult-form .form-control {
+    height: 58px;
+    font-size: 1.05rem;
+    border: 1px solid #ced4da;
+    background: #fff;
+}
+
+.consult-form .form-control:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.25rem rgba(0,0,0,0.08);
+}
+
+.consult-form .input-group-text {
+    background: #f1f3f5;
+    border: 1px solid #ced4da;
+    border-right: none;
+    border-radius: 0.375rem 0 0 0.375rem;
+    color: #6c757d;
+}
+
+.consult-form .btn-dark.rounded-pill {
+    font-size: 1.18rem;
+    padding: 14px 32px;
+    transition: all 0.2s;
+}
+
+.consult-form .btn-dark:hover {
+    background: #111;
+    transform: translateY(-1px);
+}
+
+/* Адаптив */
+@media (max-width: 991px) {
+    .free-consult-section .consult-wrapper {
+        margin: 0 15px;
+    }
+
+    .consult-wrapper h2 {
+        font-size: 2.4rem;
+    }
+
+    .left-side {
+        padding: 4rem 2rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .consult-form .form-control {
+        height: 52px;
+        font-size: 1rem;
+    }
+
+    .consult-form .btn-lg {
+        font-size: 1.05rem;
+        padding: 12px 24px;
+    }
+}
