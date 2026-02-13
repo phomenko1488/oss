@@ -1,6 +1,7 @@
 html, body {
     background: #F5F6FA;
     width: 100%;
+    font-family: Manrope,sans-serif; !important;
 }
 
 :root {
@@ -18,15 +19,11 @@ html, body {
 
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
     color: var(--black);
 }
 
 /* ================= HEADER ================= */
-.site-header {
-    padding: 18px 0;
-    background: #fff;
-}
+
 
 .header-inner {
     display: flex;
@@ -38,7 +35,10 @@ body {
     font-weight: 800;
     font-size: 18px;
 }
-
+.logo img{
+    max-width: 100px;
+    max-height: 100px;
+}
 .logo span {
     font-size: 10px;
     letter-spacing: 0.08em;
@@ -54,6 +54,7 @@ body {
     text-decoration: none;
     font-size: 14px;
     color: #000;
+    font-weight: 500;
 }
 
 .btn-primary-pill {
@@ -72,23 +73,24 @@ body {
 /* Typography */
 .hero-title {
     font-size: 48px;
-    font-weight: 700;
-    line-height: 1.15;
+    font-weight: 550;
+    line-height: 1.05;
 }
 
 .hero-subtitle {
     font-size: 20px;
     color: #555;
+    font-weight: 350;
 }
 
 .hero-subtitle span {
     color: #c92a2a;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 /* Cards */
 .info-card {
-    background: #1f2937;
+    background: #212631;
     border-radius: 20px;
     padding: 30px;
     color: #fff;
@@ -101,28 +103,34 @@ body {
 
 /* 99% block */
 .stat-card {
-    background: #111;
+    background: #1F1D1D;
     border-radius: 20px;
     padding: 30px;
     color: #fff;
 }
 
 .stat-value {
-    font-size: 64px;
-    font-weight: 700;
-    color: #c92a2a;
+    font-size: 6em;
+    font-weight: 500;
+    color: #B22E42;
 }
 
 .stat-text {
+    color: #fff;
     font-size: 14px;
-    opacity: 0.7;
+    /*opacity: 0.7;*/
 }
 
 /* Image */
 .hero-image {
-    /*max-height: 420px;*/
+    max-height: 420px;
 }
-
+.red-border{
+    border: 1px solid #c92a2a !important;
+}
+.red-shadow{
+    box-shadow: 6px 5px 22px -4px #FF3122;
+}
 /* Responsive */
 @media (max-width: 768px) {
     .hero-title {
@@ -133,7 +141,13 @@ body {
 .bg-gray {
     background: #2A2F3C;
 }
-
+.info-font-size{
+    font-family: Manrope, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+    letter-spacing: -.0225rem;
+}
 .platform {
     background: linear-gradient(90deg, #390911 0%, #B62F44 16.01%, #390911 55.58%, #390911 100%);
 }
