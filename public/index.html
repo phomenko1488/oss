@@ -142,7 +142,7 @@
             "description": "OS platform  — ведущий сервис корпоративного онлайн-обучения в России",
             "url": "https://osplatform.space/",
             "email": "ask@OS platform .tv",
-            "legalName": "ООО «ЭДЮСОН»",
+            "legalName": "ООО «OS platform»",
             "logo": "https://static.tildacdn.com/tild6232-6466-4063-a665-323361383566/OS platform _Academy.svg",
             "address": {
                 "@type": "PostalAddress",
@@ -251,31 +251,7 @@
             });
         };
     </script> <!-- HELPERS END -->
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i["GoogleAnalyticsObject"] = r;
-            (i[r] =
-                i[r] ||
-                function () {
-                    (i[r].q = i[r].q || []).push(arguments);
-                }),
-                (i[r].l = 1 * new Date());
-            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m);
-        })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
 
-        ga("create", "UA-39536742-6", "auto");
-
-        ga(function (tracker) {
-            var clientId = tracker.get("clientId");
-            document.cookie = "_ga_cid=" + clientId + "; path=/";
-            ga("set", "dimension1", clientId);
-        });
-
-        ga("send", "pageview");
-    </script>
     <script>
         function setCookie(cname, cvalue, exdays) {
             const d = new Date();
@@ -320,285 +296,9 @@
     </script>
     <script type="text/javascript" src="https://api.flocktory.com/v2/loader.js?site_id=3583" async="async"></script>
     <!-- BEGIN ROISTAT A/B TEST -->
-    <script>
-        function normalizePathname(pathname) {
-            if (!pathname) return "/";
-            if (pathname.length > 1 && pathname.endsWith("/")) return pathname.slice(0, -1);
-            return pathname;
-        }
-
-        const currentPathRoistat = normalizePathname(window.location.pathname);
-        const ROISTAT_AB_COOKIE = "roistat_ab";
-        const ROISTAT_AB_SUBMITTED_COOKIE = "roistat_ab_submit";
-        const COOKIE_EXPIRE = 7 * 24 * 60 * 60;
-        const COOKIE_CONFIG = {expires: COOKIE_EXPIRE, path: "/"};
-        const PROJECT_API_URL = "https://cloud.roistat.com/api/site/1.0/169321/ab/variant/get";
-        var expConfigVariants = {
-            "/excel": {"excel-redesign-011125": ["standard", "redesigned"]},
-            "/director-economy-finance": {"director-economy-finance-191125": ["standard", "redesigned"]},
-            "/education-methodist": {"education-methodist-redesign-151225": ["standard", "redesigned"]},
-        };
-        var expConfigDict = {
-            "excel-redesign-011125": {
-                sources: ["all"], sources_type: "include", type: "block-hide", variants: {
-                    standard: ["#rec1753253151", "#rec818658906", "#rec661814510", "#rec936813446", "#rec404472329", "#rec404472330", "#rec404472331", "#rec402380415", "#rec401873443", "#rec401873444", "#rec401873447", "#rec661244434", "#rec661244998", "#rec661246885", "#rec401873449", "#rec401873451", "#rec401873452", "#rec401873454", "#rec401873457", "#rec614415661", "#rec401873458", "#rec401873459", "#rec537874731", "#rec537874751", "#rec577210181", "#rec605107709", "#rec479666780", "#rec401873467", "#rec498919727", "#rec402179275", "#rec402179276", "#rec402179277", "#rec407423091", "#rec531866911", "#rec211782590", "#rec739064877", "#rec739065506", "#rec683282382", "#rec733843901"],
-                    redesigned: ["#rec1509342031", "#rec1509342041", "#rec1509342051", "#rec1509342061", "#rec1509342081", "#rec1509351571", "#rec1509351581", "#rec1509351591", "#rec1509351601", "#rec1509351611", "#rec1509351621", "#rec1509351631", "#rec1509351641", "#rec1509351651", "#rec1509351661", "#rec1509351671", "#rec1509351681", "#rec1509351691", "#rec1509351701", "#rec1509351711", "#rec1509351721", "#rec1509351731", "#rec1509351741", "#rec1509351751", "#rec1509351761", "#rec1509351771", "#rec1509351781", "#rec1509351791", "#rec1509351801", "#rec1509351811", "#rec1509351821", "#rec1509351831", "#rec1509351841", "#rec1509351851", "#rec1509351861", "#rec1509351871", "#rec1509351881", "#rec1509351891", "#rec1509351901", "#rec1509351911", "#rec1509351921", "#rec1509351931", "#rec1509351941", "#rec1509351951", "#rec1509351961", "#rec1509351971", "#rec1509351981", "#rec1509351991", "#rec1509352001", "#rec1509352011", "#rec1509352021", "#rec1509352031", "#rec1509352041", "#rec1509352051", "#rec1509352061", "#rec1509352071", "#rec1509352081", "#rec1509352091", "#rec1509352101", "#rec1509352111", "#rec1509352121", "#rec1509352131", "#rec1509352141", "#rec1509352151", "#rec1045493601", "#rec968023206", "#rec973743146", "#rec1509352251"]
-                }
-            },
-            "director-economy-finance-191125": {
-                sources: ["all"], sources_type: "include", type: "block-hide", variants: {
-                    standard: ["#rec1583059491", "#rec1043277906", "#rec839696281", "#rec839773175", "#rec839780329", "#rec839785932", "#rec839692735", "#rec839792461", "#rec839947677", "#rec841954652", "#rec839947680", "#rec1043276696", "#rec1043277326", "#rec1043277671", "#rec839692736", "#rec839692737", "#rec839692738", "#rec839692741", "#rec839692742", "#rec839692743", "#rec839692744", "#rec839692745", "#rec839692746", "#rec839692747", "#rec839692748", "#rec839692749", "#rec839692750", "#rec839692751", "#rec839692752", "#rec839692753", "#rec839692754", "#rec839692755", "#rec839692756", "#rec839692757", "#rec839692758", "#rec867939570", "#rec867939659", "#rec839692759", "#rec839692760", "#rec842082462", "#rec842094769", "#rec839692761", "#rec839692762", "#rec842083793", "#rec842083921", "#rec844647705", "#rec844647706", "#rec844647722", "#rec844647723", "#rec839692767", "#rec839692768", "#rec839692769", "#rec839692770", "#rec839692771", "#rec839692772", "#rec839692773", "#rec839692774", "#rec839692775", "#rec839692776", "#rec839692777", "#rec839692778", "#rec839692779", "#rec839692780", "#rec839692781", "#rec839692782", "#rec839692783", "#rec839692784", "#rec839692785", "#rec839692786", "#rec839692787", "#rec839692788", "#rec839692789", "#rec839692790", "#rec839692791", "#rec839692792", "#rec839692793", "#rec839692794", "#rec842113892", "#rec842113893", "#rec839692795", "#rec839692796", "#rec839692797", "#rec839692798", "#rec839692799", "#rec839692800", "#rec839692801", "#rec926263336", "#rec926261116", "#rec839692802", "#rec839692803", "#rec839692804", "#rec839692805", "#rec839692806", "#rec839692807", "#rec840974126", "#rec840974127", "#rec839692809", "#rec839959522", "#rec936620541", "#rec839692819", "#rec839692820", "#rec839692821", "#rec839968749", "#rec839968954", "#rec839958801", "#rec839958802", "#rec839958803", "#rec839958804", "#rec839958805", "#rec839958806", "#rec841086245", "#rec839974962", "#rec841466740", "#rec841466741", "#rec839958813", "#rec839958814", "#rec839692849", "#rec211782590", "#rec839692855", "#rec445477271", "#rec316124553", "#rec839692863", "#rec358248722", "#rec839692870", "#rec839692871", "#rec839692872", "#rec841086787", "#rec839692876", "#rec839692877", "#rec665333586", "#rec683282382"],
-                    redesigned: ["#rec1580559651", "#rec1580559661", "#rec1580559681", "#rec1578122121", "#rec1578122141", "#rec1578122151", "#rec1578122161", "#rec1578122171", "#rec1578122181", "#rec1578122191", "#rec1578122201", "#rec1578122211", "#rec1578122221", "#rec1578122231", "#rec1578122251", "#rec1578122261", "#rec1578122281", "#rec1578122291", "#rec1578122301", "#rec1578122311", "#rec1578122321", "#rec1578122331", "#rec1578122341", "#rec1578122351", "#rec1578122361", "#rec1578122371", "#rec1578122381", "#rec1578122401", "#rec1578122411", "#rec1578122421", "#rec1578122431", "#rec1578122441", "#rec1578122461", "#rec1578122491", "#rec1578122501", "#rec1578122511", "#rec1578122531", "#rec1578122541", "#rec1578122551", "#rec1578122561", "#rec1578122571", "#rec1578122581", "#rec1578122591", "#rec1578122601", "#rec1578122611", "#rec1578122621", "#rec1578122631", "#rec1578122641", "#rec1578122651", "#rec1578122661", "#rec1578122671", "#rec1578122681", "#rec1578122691", "#rec1578122701", "#rec1578122711", "#rec1578122721", "#rec1578122741", "#rec1578122751", "#rec1578122761", "#rec1578122771", "#rec1578122781", "#rec1578122791", "#rec1578122801", "#rec1578122811", "#rec1578122841", "#rec1578122851", "#rec1578122871", "#rec1578122881", "#rec1578122891", "#rec1578122901", "#rec1578122911", "#rec1578122921", "#rec1578122931", "#rec1578122941", "#rec1578122951", "#rec1578122961", "#rec1578122971", "#rec1578122981", "#rec1578122991", "#rec1578123001", "#rec1578123011", "#rec1578123021", "#rec1578123031", "#rec1578123041", "#rec1578123051", "#rec1578123061", "#rec1578123071", "#rec1578123081", "#rec1578123091", "#rec1578123101", "#rec1578123111", "#rec1578123131", "#rec1578123141", "#rec1578123151", "#rec1578123161", "#rec1578123171", "#rec1578123181", "#rec1578123191", "#rec1578123201", "#rec1578123211", "#rec1578123221", "#rec1578123251", "#rec1578123261", "#rec1578123271", "#rec1578123281", "#rec1578123291", "#rec1578123301", "#rec1578123311", "#rec1578123321", "#rec1578123331", "#rec1578123341", "#rec1578123351", "#rec1578123361", "#rec1578123381", "#rec1578123401", "#rec1578123421", "#rec1578123431", "#rec958028801", "#rec996428781", "#rec1578123481", "#rec1578123491", "#rec973743146", "#rec1578123521", "#rec1578123541", "#rec316124553", "#rec358248722", "#rec1578123601", "#rec665333586", "#rec1578123621"]
-                }
-            },
-            "education-methodist-redesign-151225": {
-                sources: ["all"], sources_type: "include", type: "block-hide", variants: {
-                    standard: ["#rec818658906", "#rec569026373", "#rec1691352161", "#rec467023218", "#rec569072480", "#rec360629058", "#rec360628530", "#rec569127946", "#rec469111191", "#rec657066965", "#rec359870064", "#rec359870065", "#rec1245271171", "#rec1245271181", "#rec469044873", "#rec491560608", "#rec359870068", "#rec360719900", "#rec603297995", "#rec605107709", "#rec569131283", "#rec569131294", "#rec569131296", "#rec359870075", "#rec359870077", "#rec569129965", "#rec359870080", "#rec211782590", "#rec661949723", "#rec445477271", "#rec316124553", "#rec359870088", "#rec515463678", "#rec359870093", "#rec479060103", "#rec479060105", "#rec414248481", "#rec1145614256"],
-                    redesigned: ["#rec1691345051", "#rec1691345071", "#rec1691345081", "#rec1691345091", "#rec1691345101", "#rec1691351641", "#rec1691363041", "#rec1691363051", "#rec1691363061", "#rec1691363071", "#rec1691363081", "#rec1691363091", "#rec1691363101", "#rec1691363111", "#rec1691363121", "#rec1691363131", "#rec1691363141", "#rec1691363151", "#rec1691363161", "#rec1691363171", "#rec1691363181", "#rec1691363191", "#rec1691363201", "#rec1691363211", "#rec1691363221", "#rec1691363231", "#rec1691363241", "#rec1691363251", "#rec1691363261", "#rec1691363271", "#rec1691363281", "#rec1691363291", "#rec1691363301", "#rec1691363311", "#rec1691363321", "#rec1691363331", "#rec1691363341", "#rec1691363351", "#rec1691363361", "#rec1691363371", "#rec1691363381", "#rec1691363391", "#rec1691363401", "#rec1691363411", "#rec1691363421", "#rec1691363431", "#rec1691363441", "#rec1691363451", "#rec1691363471", "#rec1691363481", "#rec1691363491", "#rec1691363501", "#rec1045493601", "#rec968023206", "#rec1691363541", "#rec1691363551", "#rec1691363561", "#rec1691363571", "#rec957769931", "#rec1691363591", "#rec1691363601", "#rec1691363611", "#rec1692673891", "#rec1692743501"]
-                }
-            },
-        };
-        var marker = getMarker();
-        var testValues = [];
-        var roistatAbCookieValues = [];
-        var isRoistatABTestSumbitted = false;
-        window.isNoGroupVariant = false;
-
-        /* ROISTAT AB TEST EVENT CALLBACKS */
-        const abTestCallbackQueue = [];
-        let isABTestStarted = false;
-
-        function addOnRoistatABTestStarted(callback) {
-            if (isABTestStarted) {
-                return callback();
-            } else {
-                abTestCallbackQueue.push(callback);
-            }
-        }
-
-        function executeRoistatABTestCallbacks() {
-            isABTestStarted = true;
-            while (abTestCallbackQueue.length > 0) {
-                const callback = abTestCallbackQueue.shift();
-                callback();
-            }
-        }
-
-        document.addEventListener("RoistatABTestStarted", function () {
-            executeRoistatABTestCallbacks();
-        });
-
-        addOnRoistatABTestStarted(function () {
-            console.log("addOnRoistatABTestStarted");
-        });
-
-        /* ROISTAT AB TEST EVENT CALLBACKS END */
-
-        function getCookieValue(name) {
-            var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"));
-            return matches ? matches[1] : undefined;
-        }
-
-        function setCookieValue(name, value, options) {
-            options = options || {};
-            var expires = options.expires;
-            if (typeof expires == "number" && expires) {
-                var d = new Date();
-                d.setTime(d.getTime() + expires * 1000);
-                expires = options.expires = d;
-            }
-            if (expires && expires.toUTCString) {
-                options.expires = expires.toUTCString();
-            }
-            value = encodeURIComponent(value);
-            var updatedCookie = name + "=" + value;
-            for (var propName in options) {
-                updatedCookie += "; " + propName;
-                var propValue = options[propName];
-                if (propValue !== true) {
-                    updatedCookie += "=" + propValue;
-                }
-            }
-            Sentry.addBreadcrumb({
-                category: "abtest",
-                message: "SetcookieValue_updatedCookie: " + updatedCookie,
-                level: "debug",
-            });
-            document.cookie = updatedCookie;
-            Sentry.addBreadcrumb({
-                category: "abtest",
-                message: "SetcookieValue_document.cookie: " + document.cookie,
-                level: "debug",
-            });
-        }
-
-        function getMarker() {
-            return new URL(window.location.href).searchParams.get("utm_source") || "default";
-        }
-
-        function getDistributionUniformVariants(data, marker) {
-            var dataToSend = {ab_tests: data, marker: marker};
-            s = document.createElement("script");
-            s.src = PROJECT_API_URL + "?data=" + JSON.stringify(dataToSend) + "&jsonp=true";
-            document.head.appendChild(s);
-        }
-
-        function formatRedirectUrl(defaultUrlRoistat) {
-            const currentUTMRoistat = window.location.search.substring(1);
-            const separatorRoistat = defaultUrlRoistat.includes("?") ? "&" : "?";
-            return `${defaultUrlRoistat}${currentUTMRoistat ? separatorRoistat + currentUTMRoistat : ""}`;
-        }
-
-        function initABTestStartedEvent() {
-            document.dispatchEvent(new Event("RoistatABTestStarted"));
-            isRoistatABTestSumbitted = true;
-        }
-
-        function callbackAbTest(response) {
-            for (var test in response) {
-                var testValue = getCookieValue(test);
-                if (typeof testValue === "undefined") {
-                    testValue = response[test];
-                    setCookieValue(test, testValue, COOKIE_CONFIG);
-                }
-                testValues.push({id: test, value: testValue});
-            }
-            for (var i = 0; i < testValues.length; i++) {
-                roistatAbCookieValues.push(testValues[i].id + ":" + testValues[i].value);
-            }
-
-            setCookieValue(ROISTAT_AB_COOKIE, roistatAbCookieValues.join(","), COOKIE_CONFIG);
-            setCookieValue(ROISTAT_AB_SUBMITTED_COOKIE, "1", COOKIE_CONFIG);
-
-            expName = Object.keys(expConfigVariants[currentPathRoistat])[0];
-            expCookieGroup = getCookieValue(expName);
-
-            if (typeof expCookieGroup === "undefined" || expCookieGroup === null || typeof response === "undefined" || response === null) {
-                if (typeof Sentry !== "undefined" && "captureException" in Sentry) {
-                    Sentry.addBreadcrumb({
-                        category: "abtest",
-                        message: "Roistat response: " + JSON.stringify(response),
-                        level: "debug",
-                    });
-                    Sentry.addBreadcrumb({
-                        category: "abtest",
-                        message: "ExpCookieGroup: " + expCookieGroup,
-                        level: "debug",
-                    });
-                    Sentry.addBreadcrumb({
-                        category: "abtest",
-                        message: "getCookieValueRoistatABSubmit: " + getCookieValue("roistat_ab_submit"),
-                        level: "debug",
-                    });
-                    Sentry.addBreadcrumb({
-                        category: "abtest",
-                        message: "getCookieValueExpName: " + getCookieValue(expName),
-                        level: "debug",
-                    });
-                    Sentry.addBreadcrumb({
-                        category: "abtest",
-                        message: "ExpName: " + expName,
-                        level: "debug",
-                    });
-                    Sentry.addBreadcrumb({
-                        category: "abtest",
-                        message: "testValues: " + JSON.stringify(testValues),
-                        level: "debug",
-                    });
-                    Sentry.captureException(
-                        JSON.stringify({
-                            message: "Experiment cookie not found during callbackAbTest",
-                            data: {
-                                getCookieValueRoistatABSubmit: getCookieValue("roistat_ab_submit"),
-                                getCookieValueExpName: getCookieValue(expName),
-                                response
-                            },
-                        })
-                    );
-                }
-            }
-
-            window.callBackAbTestDataToLog = {
-                response,
-                testValues,
-            };
-            console.log("callbackAbTest", response, roistatAbCookieValues, getCookieValue(Object.keys(expConfigVariants[currentPathRoistat])[0]));
-
-            initABTestStartedEvent();
-        }
-
-        var currentPathRoistatKeys = Object.keys(expConfigVariants);
-        if (currentPathRoistatKeys.includes(currentPathRoistat)) {
-            var expName = Object.keys(expConfigVariants[currentPathRoistat])[0];
-            var expSourceOptions = expConfigDict[expName]["sources"];
-
-            const expSourcesType = expConfigDict[expName]["sources_type"];
-
-            let currentExpSourceIncluded = false;
-            let currentExpSourceNotExcluded = false;
-
-            if (expSourcesType === "include" && expSourceOptions.includes(marker)) {
-                currentExpSourceIncluded = true;
-            } else if (expSourcesType === "exclude" && !expSourceOptions.includes(marker)) {
-                currentExpSourceNotExcluded = true;
-            }
-
-            if (expSourceOptions.includes("all") || currentExpSourceIncluded || currentExpSourceNotExcluded) {
-                //Изменено 17.12.2024
-                //раньше в условии было getCookieValue(ROISTAT_AB_SUBMITTED_COOKIE) !== "1"
-                //Работало неккоректно, так как кука была общая для всех лендов
-                const cookieValue = getCookieValue(expName);
-                if (typeof cookieValue === "undefined" || cookieValue === null) {
-                    getDistributionUniformVariants(expConfigVariants[currentPathRoistat], marker);
-                } else {
-                    initABTestStartedEvent();
-                }
-            } else {
-                window.isNoGroupVariant = true;
-            }
-        }
-    </script> <!-- END ROISTAT A/B TEST -->
-    <script>
-        /* ROISTAT MODULES INIT CALLBACKS */
-        const visitProcessedCallbackQueue = [];
-        let isVisitProcessed = false;
-
-        function addOnRoistatVisitProcessed(callback) {
-            if (isVisitProcessed) {
-                return callback();
-            } else {
-                visitProcessedCallbackQueue.push(callback);
-            }
-        }
-
-        function executeOnRoistatVisitProcessedCallbacks() {
-            isVisitProcessed = true;
-            while (visitProcessedCallbackQueue.length > 0) {
-                const callback = visitProcessedCallbackQueue.shift();
-                callback();
-            }
-        }
-
-        window.onRoistatAllModulesLoaded = function () {
-            window.roistat.registerOnVisitProcessedCallback(function () {
-                executeOnRoistatVisitProcessedCallbacks();
-            });
-        };
-    </script> <!-- Roistat Counter Start -->
-    <script>
-        (function (w, d, s, h, id) {
-            w.roistatProjectId = id;
-            w.roistatHost = h;
-            var p = d.location.protocol == "https:" ? "https://" : "http://";
-            var u = /^.*roistat_visit=[^;]+(.*)?$/.test(d.cookie) ? "/dist/module.js" : "/api/site/1.0/" + id + "/init?referrer=" + encodeURIComponent(d.location.href);
-            var js = d.createElement(s);
-            js.charset = "UTF-8";
-            js.async = 1;
-            js.src = p + h + u;
-            var js2 = d.getElementsByTagName(s)[0];
-            js2.parentNode.insertBefore(js, js2);
-        })(window, document, "script", "cloud.roistat.com", "6290903adee767f275051f47d5d598e3");
-    </script> <!-- Roistat Counter End -->
+    <!-- END ROISTAT A/B TEST -->
+    <!-- Roistat Counter Start -->
+    <!-- Roistat Counter End -->
     <style>
         .t-form-success-popup__text a {
             color: white;
@@ -706,7 +406,7 @@
                         "@type": "Review",
                         "author": "Петр И.",
                         "reviewBody": "Рад, что выбрал эту школу среди всех конкурентов! Очень подробные уроки, но может показаться водой, если ты опытный. &#10;Кураторы на связи  целый год после покупки курса и отвечают быстро и развёрнуто. Больше всего понравились интерактивные тренажёры на которых можно сразу же применить свои знания!",
-                        "name": "Обучение без границ с Академией Эдюсон!",
+                        "name": "Обучение без границ с Академией OS platform!",
                         "datePublished": "2023-10-26",
                         "reviewRating": {
                             "@type": "Rating",
@@ -908,44 +608,10 @@
         }
     </script> <!-- nominify end -->
     <script type="text/javascript">window.dataLayer = window.dataLayer || [];</script> <!-- Google Tag Manager -->
-    <script type="text/javascript">(function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KDDBXBS');</script> <!-- End Google Tag Manager -->
+    <!-- End Google Tag Manager -->
     <!-- Facebook Pixel Code -->
-    <script type="text/javascript" data-tilda-cookie-type="advertising">setTimeout(function () {
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.agent = 'pltilda';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1100170521353824');
-        fbq('track', 'PageView');
-    }, 2000);</script> <!-- End Facebook Pixel Code --> <!-- VK Pixel Code -->
-    <script type="text/javascript" data-tilda-cookie-type="advertising">setTimeout(function () {
-        !function () {
-            var t = document.createElement("script");
-            t.type = "text/javascript", t.async = !0, t.src = "https://vk.com/js/api/openapi.js?161", t.onload = function () {
-                VK.Retargeting.Init("VK-RTRG-1870518-henw8"), VK.Retargeting.Hit()
-            }, document.head.appendChild(t)
-        }();
-    }, 2000);</script> <!-- End VK Pixel Code -->
+    <!-- End Facebook Pixel Code --> <!-- VK Pixel Code -->
+    <!-- End VK Pixel Code -->
     <script type="text/javascript">(function () {
         if ((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent)) === false && typeof (sessionStorage) != 'undefined' && sessionStorage.getItem('visited') !== 'y' && document.visibilityState) {
             var style = document.createElement('style');
@@ -13024,7 +12690,7 @@
                      data-field-left-res-320-value="62" data-field-height-res-320-value="56"
                      data-field-width-res-320-value="197" data-field-widthmode-res-320-value="fixed"
                      data-field-heightmode-res-320-value="fixed"><a class='tn-atom' href="start-for-everyone.html"
-                                                                    >
+                >
                     <div class='tn-atom__button-content'><span class="tn-atom__button-text">Узнать больше</span></div>
                     <span class="tn-atom__button-border"></span> </a></div>
             </div>
@@ -13047,7 +12713,7 @@
                                     <div class="blog-card">
                                         <div class="blog-card-img"><a
                                                 href="https://blog.osplatform.space/articles/upravlenie/kak-zakonno-uvolit-sotrudnika-poryadok-prichiny-i-metody/"
-                                                ><img
+                                        ><img
                                                 src="https://static.tildacdn.com/tild6134-3733-4661-b765-356161353461/blog-1.webp"
                                                 loading="lazy" width="376" alt=""></a></div>
                                         <div class="blog-card-top">
@@ -13056,7 +12722,7 @@
                                         </div>
                                         <div class="blog-title"><a
                                                 href="https://blog.osplatform.space/articles/upravlenie/kak-zakonno-uvolit-sotrudnika-poryadok-prichiny-i-metody/"
-                                                >Как законно уволить сотрудника: порядок, причины и
+                                        >Как законно уволить сотрудника: порядок, причины и
                                             методы</a></div>
                                         <p>Как уволить неугодного сотрудника без скандалов? Многие думают, что
                                             достаточно просто сказать: «Всё, ты уволен». А потом внезапно оказываются в
@@ -13069,7 +12735,7 @@
                                     <div class="blog-card">
                                         <div class="blog-card-img"><a
                                                 href="https://blog.osplatform.space/articles/marketing/chto-takoe-voronka-prodazh-i-kak-ona-rabotaet/"
-                                                ><img
+                                        ><img
                                                 src="https://static.tildacdn.com/tild6331-6333-4530-a530-656336333465/blog-2.webp"
                                                 loading="lazy" width="376" alt=""></a></div>
                                         <div class="blog-card-top">
@@ -13078,7 +12744,7 @@
                                         </div>
                                         <div class="blog-title"><a
                                                 href="https://blog.osplatform.space/articles/marketing/chto-takoe-voronka-prodazh-i-kak-ona-rabotaet/"
-                                                >Что такое воронка продаж и как она работает</a></div>
+                                        >Что такое воронка продаж и как она работает</a></div>
                                         <p>Представьте: вы открыли магазин. Люди заходят, смотрят, кто-то задаёт
                                             вопросы, кто-то уходит, а кто-то — покупает. Почему одни сразу платят, а
                                             другие исчезают навсегда? Ответ — в воронке продаж. Это простой способ
@@ -13090,7 +12756,7 @@
                                     <div class="blog-card">
                                         <div class="blog-card-img"><a
                                                 href="https://blog.osplatform.space/articles/upravlenie/obratnaya-svyaz-ot-rukovoditelya-kak-pravilno-ee-davat/"
-                                                ><img
+                                        ><img
                                                 src="https://static.tildacdn.com/tild3232-3839-4538-a435-303663643237/blog-3.webp"
                                                 loading="lazy" width="376" alt=""></a></div>
                                         <div class="blog-card-top">
@@ -13099,7 +12765,7 @@
                                         </div>
                                         <div class="blog-title"><a
                                                 href="https://blog.osplatform.space/articles/upravlenie/obratnaya-svyaz-ot-rukovoditelya-kak-pravilno-ee-davat/"
-                                                >Обратная связь от руководителя: как правильно её
+                                        >Обратная связь от руководителя: как правильно её
                                             давать</a></div>
                                         <p>Обратная связь кажется довольно известным и популярным инструментом
                                             бизнес-общения.</p></div>
@@ -13460,7 +13126,7 @@
 
                     <div class="osf__social">
                         <a class="osf__iconBtn" href="https://instagram.com/YOUR_INSTAGRAM?roistat_visit=26095886"
-                            rel="noopener" aria-label="Instagram OS Platform">
+                           rel="noopener" aria-label="Instagram OS Platform">
                             <!-- Instagram icon (SVG) -->
                             <svg class="osf__icon" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm9 2h-9A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9A3.5 3.5 0 0 0 20 16.5v-9A3.5 3.5 0 0 0 16.5 4z"></path>
@@ -13488,18 +13154,18 @@
                         </button>
 
                         <div class="osf__links" data-osf-panel="">
-                            <a class="osf__link" href="catalogue/analytics.html" 
+                            <a class="osf__link" href="catalogue/analytics.html"
                                rel="noopener">Crypto</a>
-                            <a class="osf__link" href="catalogue/hr.html"  rel="noopener">Nutra</a>
-                            <a class="osf__link" href="catalogue/accounting.html" 
+                            <a class="osf__link" href="catalogue/hr.html" rel="noopener">Nutra</a>
+                            <a class="osf__link" href="catalogue/accounting.html"
                                rel="noopener">iGaming</a>
                             <a class="osf__link osf__link--hot" href="it-all.html?roistat_visit=26095886"
-                               
+
                                rel="noopener">
                                 Універсальний арбітражник
                                 <span class="osf__tag">Top</span>
                             </a>
-                            <a class="osf__link" href="catalogue/marketing.html" 
+                            <a class="osf__link" href="catalogue/marketing.html"
                                rel="noopener">TikTok</a>
                         </div>
                     </section>
@@ -13512,16 +13178,16 @@
 
                         <div class="osf__links osf__links--two" data-osf-panel="">
                             <a class="osf__link" href="https://osplatform.space/work?roistat_visit=26095886"
-                               
+
                                rel="noopener">AI-Генерація контенту</a>
                             <a class="osf__link" href="https://osplatform.space/work?roistat_visit=26095886"
-                               
+
                                rel="noopener">AI-Автоматизація</a>
                             <a class="osf__link" href="https://osplatform.space/work?roistat_visit=26095886"
-                               
+
                                rel="noopener">AI-Креатор</a>
                             <a class="osf__link" href="https://osplatform.space/work?roistat_visit=26095886"
-                               
+
                                rel="noopener">AI-Створення сайтів</a>
                         </div>
                     </section>
@@ -13534,15 +13200,15 @@
 
                         <div class="osf__links osf__links--two" data-osf-panel="">
                             <a class="osf__link" href="https://free.osplatform.space/?roistat_visit=26095886"
-                               
+
                                rel="noopener">P2P арбітраж</a>
                             <a class="osf__link"
                                href="https://osplatform.space/career-internship?roistat_visit=26095886"
-                                rel="noopener">Трейдінг</a>
+                               rel="noopener">Трейдінг</a>
                             <a class="osf__link" href="https://osplatform.space/referral?roistat_visit=26095886"
-                                rel="noopener">Безпека портфелю</a>
+                               rel="noopener">Безпека портфелю</a>
                             <a class="osf__link" href="https://osplatform.space/gift-certificate?roistat_visit=26095886"
-                                rel="noopener">Web-3 journey</a>
+                               rel="noopener">Web-3 journey</a>
                         </div>
                     </section>
 
@@ -13575,34 +13241,34 @@
                                     <div class="row">
                                         <div class="col-6 mob-col">
                                             <ul class="f-list">
-                                                <li><a href="catalogue/management-and-business.html" >Управление
+                                                <li><a href="catalogue/management-and-business.html">Управление
                                                     и бизнес</a></li>
-                                                <li><a href="catalogue/analytics.html" >Аналитика</a>
+                                                <li><a href="catalogue/analytics.html">Аналитика</a>
                                                 </li>
-                                                <li><a href="catalogue/hr.html" >HR</a></li>
-                                                <li><a href="catalogue/accounting.html" >Бухгалтерия</a>
+                                                <li><a href="catalogue/hr.html">HR</a></li>
+                                                <li><a href="catalogue/accounting.html">Бухгалтерия</a>
                                                 </li>
-                                                <li><a href="it-all.html" >IT</a></li>
-                                                <li><a href="catalogue/marketing.html" >Маркетинг</a>
+                                                <li><a href="it-all.html">IT</a></li>
+                                                <li><a href="catalogue/marketing.html">Маркетинг</a>
                                                 </li>
-                                                <li><a href="catalogue/soft-skills.html" >Soft skills</a>
+                                                <li><a href="catalogue/soft-skills.html">Soft skills</a>
                                                 </li>
-                                                <li><a href="https://osplatform.space/catalogue/mba" >Программы
+                                                <li><a href="https://osplatform.space/catalogue/mba">Программы
                                                     МВА</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-6 mob-col">
                                             <ul class="f-list">
-                                                <li><a href="catalogue/sales.html" >Продажи</a></li>
-                                                <li><a href="catalogue/remote-work.html" >Профессии на
+                                                <li><a href="catalogue/sales.html">Продажи</a></li>
+                                                <li><a href="catalogue/remote-work.html">Профессии на
                                                     удалёнке</a></li>
-                                                <li><a href="catalogue/excel.html" >Excel</a></li>
-                                                <li><a href="catalogue/psychology.html" >Психология</a>
+                                                <li><a href="catalogue/excel.html">Excel</a></li>
+                                                <li><a href="catalogue/psychology.html">Психология</a>
                                                 </li>
-                                                <li><a href="catalogue/finance.html" >Финансы</a></li>
-                                                <li><a href="catalogue/popular.html" >Популярные
+                                                <li><a href="catalogue/finance.html">Финансы</a></li>
+                                                <li><a href="catalogue/popular.html">Популярные
                                                     курсы</a></li>
-                                                <li><a href="catalogue/design.html" >Дизайн</a></li>
+                                                <li><a href="catalogue/design.html">Дизайн</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -13612,27 +13278,27 @@
                                         <div class="col-6">
                                             <div class="f-title">Академия</div>
                                             <ul class="f-list two-col">
-                                                <li><a href="https://osplatform.space/work" >Вакансии</a>
+                                                <li><a href="https://osplatform.space/work">Вакансии</a>
                                                 </li>
-                                                <li><a href="otzyvy.html" >Отзывы</a></li>
-                                                <li><a href="contacts.html" >Контакты</a></li>
-                                                <li><a href="https://blog.osplatform.space/" >Блог</a>
+                                                <li><a href="otzyvy.html">Отзывы</a></li>
+                                                <li><a href="contacts.html">Контакты</a></li>
+                                                <li><a href="https://blog.osplatform.space/">Блог</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col-6">
                                             <div class="f-title">Программы</div>
                                             <ul class="f-list two-col">
-                                                <li><a href="https://free.osplatform.space/" >Бесплатные
+                                                <li><a href="https://free.osplatform.space/">Бесплатные
                                                     курсы</a></li>
-                                                <li><a href="career-internship.html" >Стажировка</a></li>
-                                                <li><a href="https://osplatform.space/referral" >Реферальная
+                                                <li><a href="career-internship.html">Стажировка</a></li>
+                                                <li><a href="https://osplatform.space/referral">Реферальная
                                                     программа</a></li>
-                                                <li><a href="corp-sale.html" >Корпоративное обучение</a>
+                                                <li><a href="corp-sale.html">Корпоративное обучение</a>
                                                 </li>
-                                                <li><a href="partner-program.html" >Партнёрская
+                                                <li><a href="partner-program.html">Партнёрская
                                                     программа</a></li>
-                                                <li><a href="https://osplatform.space/gift-certificate" >Подарочные
+                                                <li><a href="https://osplatform.space/gift-certificate">Подарочные
                                                     сертификаты</a></li>
                                             </ul>
                                         </div>
@@ -13644,14 +13310,14 @@
                                             <div class="f-title">Документы</div>
                                             <ul class="f-list">
                                                 <li><a href="https://osplatform.space/policy-personal-data"
-                                                       >Политика обработки персональных данных</a></li>
-                                                <li><a href="https://osplatform.space/offer" >Публичная
+                                                >Политика обработки персональных данных</a></li>
+                                                <li><a href="https://osplatform.space/offer">Публичная
                                                     оферта для физических лиц</a></li>
-                                                <li><a href="https://osplatform.space/ru/offer-yl" >Публичная
+                                                <li><a href="https://osplatform.space/ru/offer-yl">Публичная
                                                     оферта для юридических лиц и ИП</a></li>
-                                                <li><a href="license.html" >Государственная лицензия</a>
+                                                <li><a href="license.html">Государственная лицензия</a>
                                                 </li>
-                                                <li><a href="https://osplatform.space/info" >Сведения об
+                                                <li><a href="https://osplatform.space/info">Сведения об
                                                     образовательной организации</a></li>
                                             </ul>
                                         </div>
@@ -13666,26 +13332,26 @@
                                             101-14-04</a> <a href="mailto:academy@OS platform .tv" class="od-email"
                                                              aria-label="Написать на email">academy@OS platform .tv</a>
                                             <ul class="od-social" aria-label="Социальные сети">
-                                                <li><a href="https://t.me/OS platform daily" 
+                                                <li><a href="https://t.me/OS platform daily"
                                                        class="telegram"
                                                        aria-label="Telegram">
                                                     <svg class="icon">
                                                         <use xlink:href="#telegram"></use>
                                                     </svg>
                                                 </a></li>
-                                                <li><a href="https://vk.com/public201850172"  class="vk"
+                                                <li><a href="https://vk.com/public201850172" class="vk"
                                                        aria-label="ВКонтакте">
                                                     <svg class="icon">
                                                         <use xlink:href="#black-vk"></use>
                                                     </svg>
                                                 </a></li>
-                                                <li><a href="https://www.youtube.com/@OS platform TV" 
+                                                <li><a href="https://www.youtube.com/@OS platform TV"
                                                        class="youtube" aria-label="YouTube">
                                                     <svg class="icon">
                                                         <use xlink:href="#youtube"></use>
                                                     </svg>
                                                 </a></li>
-                                                <li><a href="https://dzen.ru/OS platform _academy" 
+                                                <li><a href="https://dzen.ru/OS platform _academy"
                                                        class="zen"
                                                        aria-label="Яндекс.Дзен">
                                                     <svg class="icon">
@@ -15000,83 +14666,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             <div class="t123">
                 <div class="t-container_100 ">
                     <div class="t-width t-width_100 "> <!-- nominify begin -->
-                        <script>
-                            /* global roistat, $, processPage, setCookie, addOnRoistatVisitProcessed */
-                            addOnRoistatVisitProcessed(() => {
-                                $(document).ready(function () {
-                                    if (typeof roistat === "undefined") {
-                                        return;
-                                    }
 
-                                    const roistatMarker = roistat.getSource() || "";
-                                    console.log("roistatMarker:", roistatMarker);
-
-                                    function isSeoLead() {
-                                        return (
-                                            roistatMarker &&
-                                            (roistatMarker.startsWith("seo") || roistatMarker.startsWith(":utm:seo")) &&
-                                            document.referrer !== "" &&
-                                            !document.referrer.startsWith("https://osplatform.space")
-                                        );
-                                    }
-
-                                    if (!isSeoLead()) {
-                                        return;
-                                    }
-
-                                    //set session cookie
-                                    const cookieString = "seo_" + roistatMarker.split("_").slice(1).join("_");
-                                    document.cookie = `roistat_custom_utm_marker=${encodeURIComponent(cookieString)}; path=/; SameSite=None; Secure`;
-
-                                    /**
-                                     * !Временное выключение проставления utm меток!
-
-                                     // Split the roistat_marker into parts
-                                     const parts = roistatMarker.split("_");
-
-                                     const utmVariants = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
-
-                                     const url = new URL(window.location);
-                                     const params = new URLSearchParams(url.search);
-
-                                     // Function to check if any UTM parameters are present
-                                     function hasUtmParameters(params) {
-                                     for (const key of params.keys()) {
-                                     if (key.startsWith("utm_")) {
-                                     return true;
-                                     }
-                                     }
-                                     return false;
-                                     }
-
-                                     // Apply UTMs only if none are present in the URL
-                                     if (!hasUtmParameters(params)) {
-                                     utmVariants.forEach(function (utmVariant, index) {
-                                     if (index === 0) {
-                                     params.set(utmVariant, "seo");
-                                     return;
-                                     }
-                                     const part = parts[index] ?? undefined;
-                                     if (part) {
-                                     params.set(utmVariant, part);
-                                     }
-                                     });
-
-                                     // Update the URL without reloading the page
-                                     url.search = params.toString();
-                                     window.history.replaceState({}, "", url);
-                                     }
-
-                                     // **Call the function from the second script**
-                                     if (typeof processPage === "function") {
-                                     processPage();
-                                     }
-                                     */
-                                });
-
-
-                            });
-                        </script>
                         <script>
                             function processPage() {
                                 $("a").each(function () {
@@ -15130,421 +14720,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 <div class="t-container_100 ">
                     <div class="t-width t-width_100 "> <!-- nominify begin -->
                         <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-                        <script>
-                            const leadMagnetMetrikaUrls = ["/cpa-qa-autotester", "/cpa-marketplace", "/cpa-traffic-manager"];
-
-                            const IdsByProductUrl = {
-                                "/qa": 2957141,
-                                "/qa-autotester": 2957431,
-                                "/hr-business-partner": 2953685,
-                                "/python": 2957373,
-                                "/graphic-designer": 2959601,
-                                "/glavbuh": 2959167,
-                                "/accountant": 2951549,
-                                "/data-analyst": 2958573,
-                                "/finance-non-finance": 2960793,
-                                "/invest-analyst": 2964882,
-                                "/economist-financier": 2962216,
-                                "/msfo": 2962222,
-                                "/gen-dir": 2958421,
-                                "/systems-analyst": 2963250,
-                                "/data-scientist": 2959281,
-                                "/it-specialist": 2964515,
-                                "/frontend": 2960329,
-                                "/fullstack-python": 2963302,
-                                "/marketplace": 2952531,
-                                "/hrdirector": 2956689,
-                                "/internet-marketing": 2952481,
-                                "/ai": 2964680,
-                                "/marketing-director": 2956607,
-                                "/marketing-for-business": 2965312,
-                                "/marketing-mba": 2959579,
-                                "/copywriter": 2958531,
-                                "/traffic-manager": 2961714,
-                                "/web-design": 2962846,
-                                "/interior-designer": 2964324,
-                                "/3ds-max": 2965148,
-                                "/interior-visualizer": 2965150,
-                                "/online-course-creator": 2954611,
-                                "/education-methodist": 2952405,
-                                "/analytics-director": 2965714,
-                                "/sql-developer": 2965400,
-                                "/analytics-for-managers": 2964584,
-                                "/findir": 2952355,
-                                "/operations-director": 2961548,
-                                "/fin-analyst": 2951725,
-                                "/pto-engineer": 2966018,
-                                "/ai-construction": 2966500,
-                                "/project-manager": 2964368,
-                                "/ai-workers": 2966462,
-                                "/graph-design-ai": 2965956,
-                                "/ai-designer": 2965898,
-                                "/ai-content-engine": 2965898,
-                                "/excel": 2954477,
-                            };
-
-                            window.flocktory = window.flocktory || [];
-                            var isMainProcessing = false;
-                            var mainSuccessTimestamp = Date.now();
-                            let currentPath = window.location.pathname;
-                            currentPath = currentPath.endsWith("/") ? currentPath.slice(0, -1) : currentPath;
-                            const normalizedPath = currentPath;
-                            const flocktory_approved_paths = [
-                                "/marketplace",
-                                "/web-designer",
-                                "/education-methodist",
-                                "/business-analyst-pro",
-                                "/business-analyst",
-                                "/qa",
-                                "/1c-excel",
-                                "/copywriter",
-                                "/hr-manager",
-                                "/internet-marketing",
-                                "/product-manager",
-                                "/sql",
-                                "/kdp",
-                                "/project-manager-it",
-                                "/fin-analyst",
-                                "/sales-manager",
-                                "/qa-autotester",
-                                "/soft-skills-manager",
-                                "/online-course-creator",
-                                "/power-bi",
-                                "/marketplace-seller",
-                                "/fin-management",
-                                "/qa-g",
-                                "/web-developer",
-                                "/hr-analyst",
-                                "/excel-finance",
-                                "/team-management",
-                                "/it-recruiter",
-                                "/com-dir-world",
-                                "/fin-modeling",
-                                "/orator",
-                                "/excel-buhgalter",
-                                "/tnd-director",
-                                "/business-analyst-women",
-                                "/remote-crew",
-                                "/soft-skills-women",
-                                "/soft-skills",
-                                "/business-analyst-master",
-                                "/project-manager-new",
-                                "/data-analysis-full",
-                                "/data-analyst-new",
-                                "/sale",
-                            ];
-                            const get4click_approved_paths = [
-                                "/data-analyst",
-                                "/accountant",
-                                "/1c",
-                                "/graphic-designer",
-                                "/python",
-                                "/msoffice",
-                                "/python-free",
-                                "/mp-free",
-                                "/wb-free",
-                                "/data-scientist",
-                                "/frontend",
-                                "/data-analyst-free",
-                                "/start-business",
-                                "/accountant-free",
-                                "/sales-free",
-                                "/project-manager-free",
-                                "/internet-marketing-free",
-                                "/copywriter-free",
-                                "/ue-metrics-free",
-                                "/product-manager-free",
-                                "/bi-analyst",
-                                "/tools",
-                                "/finance-indicators-free",
-                                "/developer-free",
-                                "/web-developer-free",
-                            ];
-                            const telegram_approved_paths = ["/page40546158.html"];
-
-                            function getRandomInt(min, max) {
-                                min = Math.ceil(min);
-                                max = Math.floor(max);
-                                return Math.floor(Math.random() * (max - min) + min);
-                            }
-
-                            function makeObjectKeysLowercase(formData) {
-                                var key,
-                                    keys = Object.keys(formData);
-                                var n = keys.length;
-                                var newobj = {};
-                                while (n--) {
-                                    key = keys[n];
-                                    newobj[key.toLowerCase()] = formData[key];
-                                }
-                                return newobj;
-                            }
-
-                            function combineName(formData) {
-                                if (formData.hasOwnProperty("name")) {
-                                    return formData["name"];
-                                } else {
-                                    return "";
-                                }
-                            }
-
-                            function combineContacts(formData, leadId) {
-                                if (formData.hasOwnProperty("email")) {
-                                    return formData["email"];
-                                } else if (formData.hasOwnProperty("phone")) {
-                                    var phone_cleaned = formData["phone"].replace(/[^0-9]/g, "");
-                                    return phone_cleaned + "@unknown.email";
-                                } else {
-                                    return leadId.toString();
-                                    +"@unknown.email";
-                                }
-                            }
-
-                            function combineContactsExchange(formData, leadId) {
-                                if (formData.hasOwnProperty("email")) {
-                                    return formData["email"];
-                                } else if (formData.hasOwnProperty("phone")) {
-                                    var phone_cleaned = formData["phone"].replace(/[^0-9]/g, "");
-                                    return phone_cleaned + "@unknown.email";
-                                } else {
-                                    return "xname@flocktory.com";
-                                }
-                            }
-
-                            function combinePrice(formData) {
-                                let price_cleaned_standardized = 0.0;
-
-                                if (formData.hasOwnProperty("middlepricediscount") || formData.hasOwnProperty("pricediscount")) {
-                                    const priceKey = formData.hasOwnProperty("middlepricediscount") ? "middlepricediscount" : "pricediscount";
-                                    const price_cleaned = parseInt(formData[priceKey].replace(/[^0-9]/g, ""));
-                                    if (!isNaN(price_cleaned)) {
-                                        price_cleaned_standardized = parseFloat(price_cleaned.toFixed(2));
-                                    }
-                                }
-
-                                return price_cleaned_standardized;
-                            }
-
-                            let existingCookie = getCookie("tg_link_id");
-
-                            if (!existingCookie) {
-                                let cook = new Date().getTime() + "" + getRandomInt(0, 100000);
-                                document.cookie = `tg_link_id=${md5(cook)};path=/`;
-                            }
-
-                            if (IdsByProductUrl[currentPath]) {
-                                const element_product_flocktory = document.createElement("div");
-                                element_product_flocktory.className = "i-flocktory";
-                                element_product_flocktory.setAttribute("data-fl-action", "track-item-view");
-                                element_product_flocktory.setAttribute("data-fl-item-id", IdsByProductUrl[currentPath]);
-                                document.body.appendChild(element_product_flocktory);
-                            }
-
-                            function processAfterSuccessTildaForm(form) {
-                                if (!form) return;
-                                if (form instanceof jQuery) {
-                                    form = form.get(0);
-                                }
-                                isMainProcessing = true;
-                                setCookie("isLead", "true", 1);
-
-                                var leadId = form.tildaTranId;
-                                var orderId = form.tildaOrderId;
-
-                                var obj = {};
-                                var inputs = form.elements;
-                                Array.prototype.forEach.call(inputs, function (input) {
-                                    if (input.type === "radio") {
-                                        if (input.checked) obj[input.name] = input.value;
-                                    } else {
-                                        obj[input.name] = input.value;
-                                    }
-                                });
-                                obj = makeObjectKeysLowercase((formData = obj));
-                                name_value = combineName((formData = obj));
-                                email_value = combineContacts((formData = obj), (leadId = leadId));
-                                price_value = combinePrice((formData = obj));
-                                // window.flocktory.push(
-                                //     [
-                                //         'postcheckout',
-                                //         {
-                                //           user: {
-                                //             name: name_value,
-                                //             email: email_value,
-                                //           },
-                                //           order: {
-                                //             id: leadId,
-                                //             price: price_value,
-                                //           }
-                                //         }
-                                //     ]
-                                // );
-                                if (window.flocktory && typeof window.flocktory.push === "function") {
-                                    try {
-                                        const objectToPush = {
-                                            user: {
-                                                name: name_value,
-                                                email: email_value,
-                                            },
-                                            order: {
-                                                id: leadId,
-                                                price: price_value,
-                                            },
-                                        };
-
-                                        window.flocktory.push(["postcheckout", objectToPush]);
-
-                                        console.log("Flocktory push executed successfully");
-                                    } catch (error) {
-                                        console.error("Flocktory push failed", error);
-                                    }
-                                } else {
-                                    console.error("Flocktory is not initialized on this page");
-                                }
-
-                                if (
-                                    (flocktory_approved_paths.includes(currentPath) && obj["tildaspec-formname"].includes("Program")) ||
-                                    currentPath === "/sale"
-                                ) {
-                                    email_exchange_value = combineContactsExchange((formData = obj), (leadId = leadId));
-                                    const element_exchange_flocktory = document.createElement("div");
-                                    element_exchange_flocktory.className = "i-flocktory";
-                                    element_exchange_flocktory.setAttribute("data-fl-action", "exchange");
-                                    element_exchange_flocktory.setAttribute("data-fl-spot", "initial_campaign");
-                                    element_exchange_flocktory.setAttribute("data-fl-user-name", name_value);
-                                    element_exchange_flocktory.setAttribute("data-fl-user-email", email_exchange_value);
-                                    document.body.appendChild(element_exchange_flocktory);
-                                } else if (get4click_approved_paths.includes(currentPath) && obj["tildaspec-formname"].includes("Program")) {
-                                    var $popupText = $(".t702__text-wrapper");
-                                    if ($popupText.length) {
-                                        $popupText.html(`
-            <div class="t-form-success-popup__text t-descr t-descr_sm" id="tildaformsuccesspopuptext"> <div style="text-align:center;" data-customstyle="yes">Вам подарок!<br>Скидки на различные сервисы от наших друзей до -50%<br><br><a href="https://get4click.ru/ext/CPJVKAHA" style="text-decoration: none;"  rel="noopener,nofollow,sponsored">Выбрать скидку</a></div> </div>
-        `);
-                                    }
-                                } else if (get4click_approved_paths.includes(currentPath) && currentPath.includes("-free")) {
-                                    var $popupText = $("#tildaformsuccesspopuptext");
-                                    if ($popupText.length) {
-                                        $popupText.html(`
-            <div class="t-form-success-popup__text t-descr t-descr_sm" id="tildaformsuccesspopuptext"> <div style="text-align:center;" data-customstyle="yes">Вам подарок!<br>Скидки на различные сервисы от наших друзей до -50%<br><br><a href="https://get4click.ru/ext/CPJVKAHA" style="text-decoration: none;"  rel="noopener,nofollow,sponsored">Выбрать скидку</a></div> </div>
-        `);
-                                    }
-                                } else {
-                                    mainSuccessTimestamp = Date.now();
-                                    isMainProcessing = false;
-                                    var successUrl = form.getAttribute("data-success-url");
-                                    if (successUrl) {
-                                        window.location.href = successUrl;
-                                    }
-                                }
-                                mainSuccessTimestamp = Date.now();
-                                isMainProcessing = false;
-                            }
-
-                            if (document.readyState !== "loading") {
-                                us_sendFormAfterSuccess();
-                            } else {
-                                document.addEventListener("DOMContentLoaded", us_sendFormAfterSuccess);
-                            }
-
-                            function us_sendFormAfterSuccess() {
-                                var forms = document.querySelectorAll(".js-form-proccess");
-                                Array.prototype.forEach.call(forms, function (form) {
-                                    form.addEventListener("tildaform:aftersuccess", function () {
-                                        processAfterSuccessTildaForm(form);
-                                    });
-                                });
-                            }
-
-                            function t396_onSuccess(form) {
-                                if (!form) return;
-                                if (form instanceof jQuery) {
-                                    form = form.get(0);
-                                }
-                                setCookie("isLead", "true", 1);
-
-                                if (leadMagnetMetrikaUrls.includes(currentPath)) {
-                                    try {
-                                        ym(99889084, "reachGoal", "77777");
-                                        console.log(`Metrika sendEvent executed: ym(99889084, "reachGoal", "77777")`);
-                                    } catch (error) {
-                                        console.error("Metrika sendEvent failed", error);
-                                    }
-                                }
-
-                                /* номер заявки (Lead ID) */
-                                var leadId = form.tildaTranId;
-                                var orderId = form.tildaOrderId;
-
-                                /* Все поля заявки */
-                                var obj = {};
-                                var inputs = form.elements;
-                                Array.prototype.forEach.call(inputs, function (input) {
-                                    obj[input.name] = input.value;
-                                });
-
-                                if (isMainProcessing === false && mainSuccessTimestamp + 3000 < Date.now()) {
-                                    obj = makeObjectKeysLowercase((formData = obj));
-                                    name_value = combineName((formData = obj));
-                                    email_value = combineContacts((formData = obj), (leadId = leadId));
-                                    price_value = combinePrice((formData = obj));
-                                    if (window.flocktory && typeof window.flocktory.push === "function") {
-                                        try {
-                                            const objectToPush = {
-                                                user: {
-                                                    name: name_value,
-                                                    email: email_value,
-                                                },
-                                                order: {
-                                                    id: leadId,
-                                                    price: price_value,
-                                                },
-                                            };
-
-                                            window.flocktory.push(["postcheckout", objectToPush]);
-
-                                            console.log("Flocktory push executed successfully");
-                                        } catch (error) {
-                                            console.error("Flocktory push failed", error);
-                                        }
-                                    } else {
-                                        console.error("Flocktory is not initialized on this page");
-                                    }
-                                    if (
-                                        (flocktory_approved_paths.includes(currentPath) && obj["tildaspec-formname"].includes("Program")) ||
-                                        currentPath === "/sale"
-                                    ) {
-                                        email_exchange_value = combineContactsExchange((formData = obj), (leadId = leadId));
-                                        let element_exchange_flocktory = document.createElement("div");
-                                        element_exchange_flocktory.className = "i-flocktory";
-                                        element_exchange_flocktory.setAttribute("data-fl-action", "exchange");
-                                        element_exchange_flocktory.setAttribute("data-fl-spot", "initial_campaign");
-                                        element_exchange_flocktory.setAttribute("data-fl-user-name", name_value);
-                                        element_exchange_flocktory.setAttribute("data-fl-user-email", email_exchange_value);
-                                        document.body.appendChild(element_exchange_flocktory);
-                                    } else if (get4click_approved_paths.includes(currentPath) && obj["tildaspec-formname"].includes("Program")) {
-                                        var $popupText = $(".t702__text-wrapper");
-                                        if ($popupText.length) {
-                                            $popupText.html(`
-                <div class="t-form-success-popup__text t-descr t-descr_sm" id="tildaformsuccesspopuptext"> <div style="text-align:center;" data-customstyle="yes">Вам подарок!<br>Скидки на различные сервисы от наших друзей до -50%<br><br><a href="https://get4click.ru/ext/CPJVKAHA" style="text-decoration: none;"  rel="noopener,nofollow,sponsored">Выбрать скидку</a></div> </div>
-            `);
-                                        }
-                                    } else if (get4click_approved_paths.includes(currentPath) && currentPath.includes("-free")) {
-                                        var $popupText = $("#tildaformsuccesspopuptext");
-                                        if ($popupText.length) {
-                                            $popupText.html(`
-                <div class="t-form-success-popup__text t-descr t-descr_sm" id="tildaformsuccesspopuptext"> <div style="text-align:center;" data-customstyle="yes">Вам подарок!<br>Скидки на различные сервисы от наших друзей до -50%<br><br><a href="https://get4click.ru/ext/CPJVKAHA" style="text-decoration: none;"  rel="noopener,nofollow,sponsored">Выбрать скидку</a></div> </div>
-            `);
-                                        }
-                                    } else {
-                                        console.log("t396_onSuccess", form);
-                                        var successUrl = form.getAttribute("data-success-url");
-                                        if (successUrl) {
-                                            window.location.href = successUrl;
-                                        }
-                                    }
-                                }
-                            }
-                        </script> <!-- nominify end --> </div>
+                        <!-- nominify end --> </div>
                 </div>
             </div>
         </div>
@@ -15554,40 +14730,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                     <div class="t-width t-width_100 "> <!-- nominify begin -->
                         <script src="https://get4click.ru/wrapper.php?method=container&amp;shopId=1436"
                                 type="text/javascript"></script> <!-- BEGIN UIS INTEGRATION WITH ROISTAT -->
-                        <script>
-                            (function () {
-                                var onReady = function () {
-                                    var interval = setInterval(function () {
-                                        if (typeof Comagic !== "undefined" && typeof Comagic.setProperty !== "undefined" && typeof Comagic.hasProperty !== "undefined") {
-                                            Comagic.setProperty("roistat_visit", window.roistat.visit);
-                                            Comagic.hasProperty("roistat_visit", function (resp) {
-                                                if (resp === true) {
-                                                    clearInterval(interval);
-                                                }
-                                            });
-                                        }
-                                    }, 1000);
-                                };
-                                var onRoistatReady = function () {
-                                    window.roistat.registerOnVisitProcessedCallback(function () {
-                                        onReady();
-                                    });
-                                };
-                                if (typeof window.roistat !== "undefined") {
-                                    onReady();
-                                } else {
-                                    if (typeof window.onRoistatModuleLoaded === "undefined") {
-                                        window.onRoistatModuleLoaded = onRoistatReady;
-                                    } else {
-                                        var previousOnRoistatReady = window.onRoistatModuleLoaded;
-                                        window.onRoistatModuleLoaded = function () {
-                                            previousOnRoistatReady();
-                                            onRoistatReady();
-                                        };
-                                    }
-                                }
-                            })();
-                        </script> <!-- END UIS INTEGRATION WITH ROISTAT --> <!-- nominify end --> </div>
+                        <!-- END UIS INTEGRATION WITH ROISTAT --> <!-- nominify end --> </div>
                 </div>
             </div>
         </div>
@@ -15957,7 +15100,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                          data-field-widthmode-res-320-value="fixed" data-field-fontsize-res-320-value="13">
                         <div class='tn-atom' field='tn_text_1745937325044'>Наш сайт использует файлы cookie и&nbsp;обрабатывает
                             персональные данные для&nbsp;улучшения работы сайта. Продолжая пользоваться сайтом, вы
-                            соглашаетесь с&nbsp;<a href="https://osplatform.space/policy-personal-data" 
+                            соглашаетесь с&nbsp;<a href="https://osplatform.space/policy-personal-data"
                                                    rel="noreferrer noopener">Политикой обработки персональных данных</a>
                         </div>
                     </div>
@@ -17731,7 +16874,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                                 const year = new Date().getFullYear();
                                 const block = document.querySelector(selector);
                                 if (block) {
-                                    block.innerHTML = `© 2020-${year} ООО «ЭДЮСОН»`;
+                                    block.innerHTML = `© 2020-${year} ООО «OS platform»`;
                                 }
                             };
 
@@ -17763,24 +16906,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             </div>
         </div>
     </footer> <!--/footer--> </div> <!--/allrecords--> <!-- Stat --> <!-- Yandex.Metrika counter 65747131 -->
-<script type="text/javascript" data-tilda-cookie-type="analytics">setTimeout(function () {
-    (function (m, e, t, r, i, k, a) {
-        m[i] = m[i] || function () {
-            (m[i].a = m[i].a || []).push(arguments)
-        };
-        m[i].l = 1 * new Date();
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    window.mainMetrikaId = '65747131';
-    ym(window.mainMetrikaId, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-        webvisor: false,
-        params: {__ym: {"ymCms": {"cms": "tilda", "cmsVersion": "1.0"}}},
-        ecommerce: "dataLayer"
-    });
-}, 2000);</script>
+
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/65747131" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript> <!-- /Yandex.Metrika counter -->
@@ -17833,13 +16959,9 @@ setTimeout(function () {
 <noscript><img src="https://top-fwz1.mail.ru/counter?id=3733620;js=na"
                style="border:0;position:absolute;left:-9999px;width:1px;height:1px" alt="Top.Mail.Ru"/></noscript>
 <!-- //Rating Mail.ru counter --> <!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KDDBXBS" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-</noscript> <!-- End Google Tag Manager (noscript) --> <!-- FB Pixel code (noscript) -->
+<!-- End Google Tag Manager (noscript) --> <!-- FB Pixel code (noscript) -->
 <noscript><img height="1" width="1" style="display:none"
                src="https://www.facebook.com/tr?id=1100170521353824&ev=PageView&agent=pltilda&noscript=1"/></noscript>
 <!-- End FB Pixel code (noscript) --> <!-- VK Pixel code (noscript) -->
-<noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1870518-henw8" style="position:fixed; left:-999px;" alt=""/>
-</noscript> <!-- End VK Pixel code (noscript) --> </body>
+<!-- End VK Pixel code (noscript) --> </body>
 </html>
