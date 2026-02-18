@@ -19,7 +19,7 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <link rel="dns-prefetch" href="https://ws.tildacdn.com">
     <link rel="dns-prefetch" href="https://static.tildacdn.com">
-    <link rel="shortcut icon" href="https://static.tildacdn.com/tild3839-3636-4237-b762-326233613635/favicon.ico"
+    <link rel="shortcut icon" href="img/favicon.ico"
           type="image/x-icon"/> <!-- Assets -->
     <script src="https://neo.tildacdn.com/js/tilda-fallback-1.0.min.js" async charset="utf-8"></script>
     <link rel="stylesheet" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css" type="text/css" media="all"
@@ -9015,24 +9015,6 @@
                             }
 
                         </style>
-                        <script>
-                            (function () {
-                                const links = document.querySelectorAll('.lang-link');
-                                if (!links.length) return;
-
-                                const file = (location.pathname.split('/').pop() || '').toLowerCase();
-
-                                let current = 'ru';
-                                if (file === 'ua.html' || file === 'uk.html') current = 'ua';
-                                else if (file === 'en.html') current = 'en';
-                                else if (file === 'ru.html') current = 'ru';
-
-                                links.forEach(a => {
-                                    if (a.dataset.lang === current) a.classList.add('active');
-                                    a.addEventListener('click', () => localStorage.setItem('lang', a.dataset.lang));
-                                });
-                            })();
-                        </script>
                         <div class="container">
                             <div class="hero-body">
                                 <div class="hero-title"><img src="img/logo_one.svg" class="mt-5" fetchpriority="high"
@@ -9631,64 +9613,73 @@
                                         width="16" alt=""></span></button>
                             </div>
                             <div class="catalog-items"> <!-- Популярные курсы -->
-                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;"><a
-                                        href="#leadForm">
-                                    <div class="label-flash"><span class="ico"><svg class="icon"><use
-                                            xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
-                                    <img
-                                            src="img/exchange.jpeg" width="376" height="256px" alt=""
-                                            loading="lazy">
-                                    <div class="catalog-card-text">
-                                        <div class="catalog-card-title">Старт в крипте</div>
-                                        <div class="labels">
-                                            <div class="btn">Подробнее <small>
-                                                <svg style="width: 27px !important;height: 21px !important;" width="27"
-                                                     height="8" viewBox="0 0 27 8" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
-                                                </svg>
-                                            </small></div>
-                                            <!--                                            <div class="label label-course">Курс</div>-->
+                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;">
+                                    <a
+                                            href="#leadForm">
+                                        <div class="label-flash"><span class="ico"><svg class="icon"><use
+                                                xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
+                                        <img
+                                                src="img/exchange.jpeg" width="376" height="256px" alt=""
+                                                loading="lazy">
+                                        <div class="catalog-card-text">
+                                            <div class="catalog-card-title">Старт в крипте</div>
+                                            <div class="labels">
+                                                <div class="btn">Подробнее <small>
+                                                    <svg style="width: 27px !important;height: 21px !important;"
+                                                         width="27"
+                                                         height="8" viewBox="0 0 27 8"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
+                                                    </svg>
+                                                </small></div>
+                                                <!--                                            <div class="label label-course">Курс</div>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </a></div>
-                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;"><a
-                                        href="#leadForm">
-                                    <div class="label-flash"><span class="ico"><svg class="icon"><use
-                                            xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
-                                    <img
-                                            src="img/Bang Bang Studio (1).jpeg" width="376" height="256px" alt=""
-                                            loading="lazy">
-                                    <div class="catalog-card-text">
-                                        <div class="catalog-card-title">Facebook iGaming</div>
-                                        <div class="labels">
-                                            <div class="btn">Подробнее <small>
-                                                <svg style="width: 27px !important;height: 21px !important;" width="27"
-                                                     height="8" viewBox="0 0 27 8" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
-                                                </svg>
-                                            </small></div>
-                                            <!--                                            <div class="label label-course">Курс</div>-->
+                                    </a></div>
+                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;">
+                                    <a
+                                            href="#leadForm">
+                                        <div class="label-flash"><span class="ico"><svg class="icon"><use
+                                                xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
+                                        <img
+                                                src="img/Bang Bang Studio (1).jpeg" width="376" height="256px" alt=""
+                                                loading="lazy">
+                                        <div class="catalog-card-text">
+                                            <div class="catalog-card-title">Facebook iGaming</div>
+                                            <div class="labels">
+                                                <div class="btn">Подробнее <small>
+                                                    <svg style="width: 27px !important;height: 21px !important;"
+                                                         width="27"
+                                                         height="8" viewBox="0 0 27 8"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
+                                                    </svg>
+                                                </small></div>
+                                                <!--                                            <div class="label label-course">Курс</div>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </a></div>
-                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;"><a
-                                        href="#leadForm">
-                                    <div class="label-flash"><span class="ico"><svg class="icon"><use
-                                            xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
-                                    <img src="img/_ (30).jpeg" width="376" height="256px" alt="" loading="lazy">
-                                    <div class="catalog-card-text">
-                                        <div class="catalog-card-title">P2P Арбитраж</div>
-                                        <div class="labels">
-                                            <div class="btn">Подробнее <small>
-                                                <svg style="width: 27px !important;height: 21px !important;" width="27"
-                                                     height="8" viewBox="0 0 27 8" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
-                                                </svg>
-                                            </small></div>
-                                            <!--                                            <div class="label label-course">Курс</div>-->
+                                    </a></div>
+                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;">
+                                    <a
+                                            href="#leadForm">
+                                        <div class="label-flash"><span class="ico"><svg class="icon"><use
+                                                xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
+                                        <img src="img/_ (30).jpeg" width="376" height="256px" alt="" loading="lazy">
+                                        <div class="catalog-card-text">
+                                            <div class="catalog-card-title">P2P Арбитраж</div>
+                                            <div class="labels">
+                                                <div class="btn">Подробнее <small>
+                                                    <svg style="width: 27px !important;height: 21px !important;"
+                                                         width="27"
+                                                         height="8" viewBox="0 0 27 8"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
+                                                    </svg>
+                                                </small></div>
+                                                <!--                                            <div class="label label-course">Курс</div>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </a></div>
+                                    </a></div>
                                 <div class="catalog-card show" data-category="popular"><a
                                         href="#leadForm"> <img
                                         src="img/arbitrage.jpeg" width="376" height="256px" alt="" loading="lazy">
