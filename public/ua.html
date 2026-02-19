@@ -195,6 +195,11 @@
             priceValidUntilSeo,
         });
     </script> <!-- HELPERS -->
+    <style>
+        .widget {
+            display: none !important;
+        }
+    </style>
     <script>
         window.HELPERS = window.HELPERS || {};
 
@@ -9413,7 +9418,7 @@
             </div>
         </div>
     </div>
-<!--    <img src="img/tesk.svg" alt="">-->
+    <!--    <img src="img/tesk.svg" alt="">-->
     <div id="rec1499906871" class="r t-rec" style=" " data-animationappear="off" data-record-type="131"> <!-- T123 -->
         <div class="t123">
             <div class="t-container_100 ">
@@ -9427,7 +9432,8 @@
                                 <div class="header-body">
                                     <ul class="main-nav" role="menubar" aria-label="Главная навигация">
                                         <li role="none">
-                                            <a href="#catalog" role="menuitem" class="btn cat-btn bordered-btn square-btn">
+                                            <a href="#catalog" role="menuitem"
+                                               class="btn cat-btn bordered-btn square-btn">
                 <span class="ico" aria-hidden="true">
                     <svg class="icon"><use xlink:href="#board-ico"></use></svg>
                 </span>
@@ -9435,7 +9441,8 @@
                                             </a>
                                         </li>
                                         <li role="none">
-                                            <a href="#reviews" role="menuitem" class="btn cat-btn bordered-btn square-btn">
+                                            <a href="#reviews" role="menuitem"
+                                               class="btn cat-btn bordered-btn square-btn">
                 <span class="ico" aria-hidden="true">
                     <svg class="icon"><use xlink:href="#like-ico"></use></svg>
                 </span>
@@ -9443,7 +9450,8 @@
                                             </a>
                                         </li>
                                         <li role="none">
-                                            <a href="#educationHow" role="menuitem" class="btn cat-btn bordered-btn square-btn" rel="noopener">
+                                            <a href="#educationHow" role="menuitem"
+                                               class="btn cat-btn bordered-btn square-btn" rel="noopener">
                 <span class="ico" aria-hidden="true">
                     <svg class="icon"><use xlink:href="#graduation-cap-ico"></use></svg>
                 </span>
@@ -9477,59 +9485,68 @@
                         </header> <!-- / header -->
                         <style>
                             /* чтобы язык + кнопка красиво стояли рядом */
-                            .header .header-body{
-                                display:flex;
-                                align-items:center;
-                                gap:12px;
+                            .header .header-body {
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
                             }
 
                             /* переключатель */
-                            .lang-switch{
-                                display:inline-flex;
-                                align-items:center;
-                                gap:4px;
-                                padding:4px;
-                                border-radius:999px;
-                                background: rgba(0,0,0,.04);
-                                border: 1px solid rgba(0,0,0,.10);
+                            .lang-switch {
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 4px;
+                                padding: 4px;
+                                border-radius: 999px;
+                                background: rgba(0, 0, 0, .04);
+                                border: 1px solid rgba(0, 0, 0, .10);
                             }
 
                             /* ссылки языков */
-                            .lang-link{
-                                display:inline-flex;
-                                align-items:center;
-                                justify-content:center;
-                                height:34px;
-                                min-width:42px;
-                                padding:0 12px;
-                                border-radius:999px;
-                                font-size:12px;
-                                font-weight:800;
-                                letter-spacing:.06em;
-                                text-transform:uppercase;
-                                text-decoration:none;
-                                color: rgba(0,0,0,.70);
+                            .lang-link {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                height: 34px;
+                                min-width: 42px;
+                                padding: 0 12px;
+                                border-radius: 999px;
+                                font-size: 12px;
+                                font-weight: 800;
+                                letter-spacing: .06em;
+                                text-transform: uppercase;
+                                text-decoration: none;
+                                color: rgba(0, 0, 0, .70);
                                 transition: background .15s ease, transform .15s ease, color .15s ease, box-shadow .15s ease;
                             }
 
-                            .lang-link:hover{
-                                background: rgba(0,0,0,.06);
+                            .lang-link:hover {
+                                background: rgba(0, 0, 0, .06);
                                 color: #000;
                                 transform: translateY(-1px);
                             }
 
-                            .lang-link.active{
-                                background: rgba(0,0,0,.12);
-                                color:#000;
-                                box-shadow: 0 8px 20px rgba(0,0,0,.10);
+                            .lang-link.active {
+                                background: rgba(0, 0, 0, .12);
+                                color: #000;
+                                box-shadow: 0 8px 20px rgba(0, 0, 0, .10);
                             }
 
                             /* мобилка — чтобы не ломало */
-                            @media (max-width: 980px){
-                                .lang-switch{ margin-left:auto; } /* уйдёт вправо перед CTA */
+                            @media (max-width: 980px) {
+                                .lang-switch {
+                                    margin-left: auto;
+                                }
+
+                                /* уйдёт вправо перед CTA */
                             }
-                            @media (max-width: 560px){
-                                .lang-link{ height:32px; min-width:38px; padding:0 10px; }
+
+                            @media (max-width: 560px) {
+                                .lang-link {
+                                    height: 32px;
+                                    min-width: 38px;
+                                    padding: 0 10px;
+                                }
                             }
                         </style>
 
@@ -10129,73 +10146,85 @@
                                 <button data-filter="it" class="">Криптовалюта</button>
                                 <button data-filter="analytics" class="">P2P</button>
                                 <button data-filter="ai" class="">Офісне забезпечення</button>
-                                <button class="all-btn" href="#leadForm"><span>Не знаєш що обрати?</span> <span class="ico"><img
+                                <button class="all-btn" href="#leadForm"><span>Не знаєш що обрати?</span> <span
+                                        class="ico"><img
                                         src="https://static.tildacdn.com/tild6664-3733-4034-a630-616264336637/arrow-up.svg"
                                         width="16" alt=""></span></button>
                             </div>
                             <div class="catalog-items"> <!-- Популярные курсы -->
-                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;"><a
-                                        href="#leadForm">
-                                    <div class="label-flash"><span class="ico"><svg class="icon"><use
-                                            xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div><img
-                                        src="img/exchange.jpeg" width="376" height="256px" alt=""
-                                        loading="lazy">
-                                    <div class="catalog-card-text">
-                                        <div class="catalog-card-title">Старт в Крипті</div>
-                                        <div class="labels">
-                                            <div class="btn">Детальнiше <small>
-                                                <svg style="width: 27px !important;height: 21px !important;" width="27"
-                                                     height="8" viewBox="0 0 27 8" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
-                                                </svg>
-                                            </small></div>
-                                            <!--                                            <div class="label label-course">Курс</div>-->
+                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;">
+                                    <a
+                                            href="#leadForm">
+                                        <div class="label-flash"><span class="ico"><svg class="icon"><use
+                                                xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
+                                        <img
+                                                src="img/exchange.jpeg" width="376" height="256px" alt=""
+                                                loading="lazy">
+                                        <div class="catalog-card-text">
+                                            <div class="catalog-card-title">Старт в Крипті</div>
+                                            <div class="labels">
+                                                <div class="btn">Детальнiше <small>
+                                                    <svg style="width: 27px !important;height: 21px !important;"
+                                                         width="27"
+                                                         height="8" viewBox="0 0 27 8"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
+                                                    </svg>
+                                                </small></div>
+                                                <!--                                            <div class="label label-course">Курс</div>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </a></div>
+                                    </a></div>
                                 <style>
-                                    .btn:hover{
+                                    .btn:hover {
                                         background: #5626a8 !important;
                                         color: white !important;
                                     }
                                 </style>
-                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;"><a
-                                        href="#leadForm" >
-                                    <div class="label-flash"><span class="ico"><svg class="icon"><use
-                                            xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div><img
-                                        src="img/Bang Bang Studio (1).jpeg" width="376" height="256px" alt=""
-                                        loading="lazy">
-                                    <div class="catalog-card-text">
-                                        <div class="catalog-card-title">Facebook iGaming</div>
-                                        <div class="labels">
-                                            <div class="btn">Детальнiше <small>
-                                                <svg style="width: 27px !important;height: 21px !important;" width="27"
-                                                     height="8" viewBox="0 0 27 8" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
-                                                </svg>
-                                            </small></div>
-                                            <!--                                            <div class="label label-course">Курс</div>-->
+                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;">
+                                    <a
+                                            href="#leadForm">
+                                        <div class="label-flash"><span class="ico"><svg class="icon"><use
+                                                xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
+                                        <img
+                                                src="img/Bang Bang Studio (1).jpeg" width="376" height="256px" alt=""
+                                                loading="lazy">
+                                        <div class="catalog-card-text">
+                                            <div class="catalog-card-title">Facebook iGaming</div>
+                                            <div class="labels">
+                                                <div class="btn">Детальнiше <small>
+                                                    <svg style="width: 27px !important;height: 21px !important;"
+                                                         width="27"
+                                                         height="8" viewBox="0 0 27 8"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
+                                                    </svg>
+                                                </small></div>
+                                                <!--                                            <div class="label label-course">Курс</div>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </a></div>
-                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;"><a
-                                        href="#leadForm">
-                                    <div class="label-flash"><span class="ico"><svg class="icon"><use
-                                            xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
-                                    <img src="img/_ (30).jpeg" width="376" height="256px" alt="" loading="lazy">
-                                    <div class="catalog-card-text">
-                                        <div class="catalog-card-title">P2P Арбітраж</div>
-                                        <div class="labels">
-                                            <div class="btn">Детальнiше <small>
-                                                <svg style="width: 27px !important;height: 21px !important;" width="27"
-                                                     height="8" viewBox="0 0 27 8" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
-                                                </svg>
-                                            </small></div>
-                                            <!--                                            <div class="label label-course">Курс</div>-->
+                                    </a></div>
+                                <div class="catalog-card show" data-category="popular" style="border: 1px solid gold;">
+                                    <a
+                                            href="#leadForm">
+                                        <div class="label-flash"><span class="ico"><svg class="icon"><use
+                                                xlink:href="#flash-ico"></use></svg></span> <span>Top</span></div>
+                                        <img src="img/_ (30).jpeg" width="376" height="256px" alt="" loading="lazy">
+                                        <div class="catalog-card-text">
+                                            <div class="catalog-card-title">P2P Арбітраж</div>
+                                            <div class="labels">
+                                                <div class="btn">Детальнiше <small>
+                                                    <svg style="width: 27px !important;height: 21px !important;"
+                                                         width="27"
+                                                         height="8" viewBox="0 0 27 8"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M26.3536 4.35355C26.5488 4.15829 26.5488 3.84171 26.3536 3.64645L23.1716 0.464466C22.9763 0.269204 22.6597 0.269204 22.4645 0.464466C22.2692 0.659728 22.2692 0.976311 22.4645 1.17157L25.2929 4L22.4645 6.82843C22.2692 7.02369 22.2692 7.34027 22.4645 7.53553C22.6597 7.7308 22.9763 7.7308 23.1716 7.53553L26.3536 4.35355ZM0 4.5H26V3.5H0V4.5Z"></path>
+                                                    </svg>
+                                                </small></div>
+                                                <!--                                            <div class="label label-course">Курс</div>-->
+                                            </div>
                                         </div>
-                                    </div>
-                                </a></div>
+                                    </a></div>
                                 <div class="catalog-card show" data-category="popular"><a
                                         href="#leadForm"> <img
                                         src="img/arbitrage.jpeg" width="376" height="256px" alt="" loading="lazy">
