@@ -13,9 +13,9 @@
 
         let lang = saved;
         if (!lang) {
-            if (nav.startsWith('uk') || nav.startsWith('ua')) lang = 'ua';
+            if (nav.startsWith('ru')) lang = 'ru';
             else if (nav.startsWith('en')) lang = 'en';
-            else lang = 'ru';
+            else lang = 'ua';
         }
 
         location.replace(`/${lang}.html`);
