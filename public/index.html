@@ -10,9 +10,6 @@
     (function () {
         const saved = localStorage.getItem('lang');
         const nav = (navigator.language || 'ru').toLowerCase();
-        if (nav.startsWith('quiz'){
-            return;
-        }
         let lang = saved;
         if (!lang) {
             if (nav.startsWith('ru')) lang = 'ru';
