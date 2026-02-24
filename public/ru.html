@@ -15707,7 +15707,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
 💬 Telegram: ${telegram || "—"}`.trim();
 
             const botToken = "8412037294:AAFYyv3RwDNIaYOhMNQ2YD1arfCigLttnig";
-            const chatId = "8305146600";
+            const chatId = "-5293876405";
 
             try {
                 submitBtn.disabled = true;
@@ -15726,6 +15726,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 gtm("form_submit", {
                     form_id: cfg.formId,
                     form_name: cfg.formName || cfg.formId,
+                    customer_phone: phone,
                     page_path: location.pathname,
                     page_url: location.href,
                     lang: document.documentElement.lang || ""
