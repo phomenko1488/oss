@@ -10632,181 +10632,7 @@
             </div>
         </div>
 
-        <script>
-            const byId = (id) => document.getElementById(id);
 
-            function setInvalid(wrapId, isInvalid) {
-                const wrap = byId(wrapId);
-                if (!wrap) return;
-                wrap.classList.toggle("is-invalid", !!isInvalid);
-            }
-
-            function normalizeTelegram(value) {
-                const v = (value || "").trim();
-                if (!v) return "";
-                if (v.startsWith("@")) return v;
-                const m = v.match(/t\.me\/([A-Za-z0-9_]{3,})/i);
-                if (m) return "@" + m[1];
-                return v;
-            }
-
-            function formatPhoneUA(raw) {
-                let s = (raw || "").replace(/[^\d+]/g, "");
-                if (/^380/.test(s)) s = "+" + s;
-                if (/^0\d{9}$/.test(s)) s = "+38" + s;
-
-                const m = s.match(/^\+380(\d{2})(\d{3})(\d{2})(\d{2})$/);
-                if (m) return `+380 (${m[1]}) ${m[2]} ${m[3]} ${m[4]}`;
-                return s;
-            }
-
-            function isValidPhoneUA(value) {
-                const digits = (value || "").replace(/\D/g, "");
-                return digits.length === 12 && digits.startsWith("380");
-            }
-
-            function isValidTelegram(v) {
-                if (!v) return true;
-                const s = v.trim();
-                const username = s.startsWith("@") ? s.slice(1) : s;
-                return /^[A-Za-z0-9_]{3,32}$/.test(username);
-            }
-
-            function initLeadForm(cfg) {
-                const form = byId(cfg.formId);
-                const statusEl = byId(cfg.statusId);
-                const submitBtn = byId(cfg.submitId);
-                const nameEl = byId(cfg.nameId);
-                const phoneEl = byId(cfg.phoneId);
-                const tgEl = byId(cfg.tgId);
-
-                if (!form || !statusEl || !submitBtn || !nameEl || !phoneEl || !tgEl) {
-                    console.warn(`[leadForm] Missing elements for ${cfg.formId}`);
-                    return;
-                }
-
-                phoneEl.addEventListener("blur", (e) => {
-                    e.target.value = formatPhoneUA(e.target.value);
-                });
-                tgEl.addEventListener("blur", (e) => {
-                    e.target.value = normalizeTelegram(e.target.value);
-                });
-
-                form.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    statusEl.textContent = "";
-                    setInvalid(cfg.wrapNameId, false);
-                    setInvalid(cfg.wrapPhoneId, false);
-                    setInvalid(cfg.wrapTgId, false);
-
-                    const name = nameEl.value.trim();
-                    const phone = formatPhoneUA(phoneEl.value);
-                    const telegram = normalizeTelegram(tgEl.value);
-
-                    let ok = true;
-                    if (!name) {
-                        setInvalid(cfg.wrapNameId, true);
-                        ok = false;
-                    }
-                    if (!isValidPhoneUA(phone)) {
-                        setInvalid(cfg.wrapPhoneId, true);
-                        ok = false;
-                    }
-                    if (!isValidTelegram(telegram)) {
-                        setInvalid(cfg.wrapTgId, true);
-                        ok = false;
-                    }
-
-                    if (!ok) {
-                        statusEl.textContent = "Please check the fields above 🙂";
-                        return;
-                    }
-
-                    phoneEl.value = phone;
-                    tgEl.value = telegram;
-
-                    const message = `🔥 New lead OS Platform
-
-👤 Name: ${name}
-📱 Phone: ${phone}
-💬 Telegram: ${telegram || "—"}`.trim();
-
-                    const botToken = "8412037294:AAFYyv3RwDNIaYOhMNQ2YD1arfCigLttnig";
-                    const chatId = "8305146600";
-
-                    try {
-                        submitBtn.disabled = true;
-                        submitBtn.textContent = "Sending…";
-
-                        const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                            method: "POST",
-                            headers: {"Content-Type": "application/json"},
-                            body: JSON.stringify({chat_id: chatId, text: message})
-                        });
-
-                        const data = await res.json();
-                        if (!data.ok) throw new Error(data.description || "Telegram error");
-
-                        form.reset();
-                        statusEl.textContent = "✅ Sent! We'll contact you soon.";
-
-                        if (cfg.closeModalOnSuccess) {
-                            setTimeout(() => {
-                                const modalEl = document.getElementById(cfg.modalId);
-                                if (modalEl && window.bootstrap) {
-                                    const inst = bootstrap.Modal.getInstance(modalEl);
-                                    if (inst) inst.hide();
-                                }
-                            }, 600);
-                        }
-                    } catch (err) {
-                        statusEl.textContent = "❌ Sending failed. Please try again.";
-                        console.error(err);
-                    } finally {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = "Send an application";
-                    }
-                });
-            }
-
-            document.addEventListener("DOMContentLoaded", () => {
-                initLeadForm({
-                    formId: "leadForm",
-                    statusId: "formStatus",
-                    submitId: "submitBtn",
-                    nameId: "name",
-                    phoneId: "phone",
-                    tgId: "telegram",
-                    wrapNameId: "wrapName",
-                    wrapPhoneId: "wrapPhone",
-                    wrapTgId: "wrapTg",
-                    closeModalOnSuccess: false
-                });
-
-                initLeadForm({
-                    formId: "leadForm_m",
-                    statusId: "formStatus_m",
-                    submitId: "submitBtn_m",
-                    nameId: "name_m",
-                    phoneId: "phone_m",
-                    tgId: "telegram_m",
-                    wrapNameId: "wrapName_m",
-                    wrapPhoneId: "wrapPhone_m",
-                    wrapTgId: "wrapTg_m",
-                    closeModalOnSuccess: true,
-                    modalId: "leadModal"
-                });
-
-                document.addEventListener("shown.bs.modal", function (e) {
-                    if (e.target && e.target.id === "leadModal") {
-                        const inp = document.getElementById("name_m");
-                        if (inp) inp.focus();
-                    }
-                });
-            });
-        </script>
 
         <!--        LEAD FORM END-->
         <div class='t396' style="display:none;">
@@ -15244,5 +15070,221 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
         </div>
     </div>
 </div>
+<script>
+    // ===== GTM helpers =====
+    window.dataLayer = window.dataLayer || [];
+    function gtmPush(eventName, payload) {
+        try {
+            window.dataLayer.push(Object.assign({ event: eventName }, payload || {}));
+        } catch (e) {}
+    }
+
+    const byId = (id) => document.getElementById(id);
+
+    function setInvalid(wrapId, isInvalid) {
+        const wrap = byId(wrapId);
+        if (!wrap) return;
+        wrap.classList.toggle("is-invalid", !!isInvalid);
+    }
+
+    function normalizeTelegram(value) {
+        const v = (value || "").trim();
+        if (!v) return "";
+        if (v.startsWith("@")) return v;
+        const m = v.match(/t\.me\/([A-Za-z0-9_]{3,})/i);
+        if (m) return "@" + m[1];
+        return v;
+    }
+
+    function formatPhoneUA(raw) {
+        let s = (raw || "").replace(/[^\d+]/g, "");
+        if (/^380/.test(s)) s = "+" + s;
+        if (/^0\d{9}$/.test(s)) s = "+38" + s;
+
+        const m = s.match(/^\+380(\d{2})(\d{3})(\d{2})(\d{2})$/);
+        if (m) return `+380 (${m[1]}) ${m[2]} ${m[3]} ${m[4]}`;
+        return s;
+    }
+
+    function isValidPhoneUA(value) {
+        const digits = (value || "").replace(/\D/g, "");
+        return digits.length === 12 && digits.startsWith("380");
+    }
+
+    function isValidTelegram(v) {
+        if (!v) return true;
+        const s = v.trim();
+        const username = s.startsWith("@") ? s.slice(1) : s;
+        return /^[A-Za-z0-9_]{3,32}$/.test(username);
+    }
+
+    function initLeadForm(cfg) {
+        const form = byId(cfg.formId);
+        const statusEl = byId(cfg.statusId);
+        const submitBtn = byId(cfg.submitId);
+        const nameEl = byId(cfg.nameId);
+        const phoneEl = byId(cfg.phoneId);
+        const tgEl = byId(cfg.tgId);
+
+        if (!form || !statusEl || !submitBtn || !nameEl || !phoneEl || !tgEl) {
+            console.warn(`[leadForm] Missing elements for ${cfg.formId}`);
+            return;
+        }
+
+        // ===== form_start (one-time per form) =====
+        let started = false;
+        const pushStart = () => {
+            if (started) return;
+            started = true;
+
+            gtmPush("form_start", {
+                form_id: cfg.formId,
+                form_name: cfg.formName || "lead",
+                page_path: location.pathname,
+                page_url: location.href,
+                lang: document.documentElement.lang || ""
+            });
+        };
+
+        [nameEl, phoneEl, tgEl].forEach((el) => {
+            el.addEventListener("focus", pushStart, { once: true });
+            el.addEventListener("input", pushStart, { once: true });
+        });
+
+        phoneEl.addEventListener("blur", (e) => {
+            e.target.value = formatPhoneUA(e.target.value);
+        });
+        tgEl.addEventListener("blur", (e) => {
+            e.target.value = normalizeTelegram(e.target.value);
+        });
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            statusEl.textContent = "";
+            setInvalid(cfg.wrapNameId, false);
+            setInvalid(cfg.wrapPhoneId, false);
+            setInvalid(cfg.wrapTgId, false);
+
+            const name = nameEl.value.trim();
+            const phone = formatPhoneUA(phoneEl.value);
+            const telegram = normalizeTelegram(tgEl.value);
+
+            let ok = true;
+            if (!name) {
+                setInvalid(cfg.wrapNameId, true);
+                ok = false;
+            }
+            if (!isValidPhoneUA(phone)) {
+                setInvalid(cfg.wrapPhoneId, true);
+                ok = false;
+            }
+            if (!isValidTelegram(telegram)) {
+                setInvalid(cfg.wrapTgId, true);
+                ok = false;
+            }
+
+            if (!ok) {
+                statusEl.textContent = "Please check the fields above 🙂";
+                return;
+            }
+
+            phoneEl.value = phone;
+            tgEl.value = telegram;
+
+            const message = `🔥 New lead OS Platform
+
+👤 Name: ${name}
+📱 Phone: ${phone}
+💬 Telegram: ${telegram || "—"}`.trim();
+
+            const botToken = "8412037294:AAFYyv3RwDNIaYOhMNQ2YD1arfCigLttnig";
+            const chatId = "8305146600";
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Sending…";
+
+                const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({chat_id: chatId, text: message})
+                });
+
+                const data = await res.json();
+                if (!data.ok) throw new Error(data.description || "Telegram error");
+
+                // ✅ form_submit (only on success)
+                gtmPush("form_submit", {
+                    form_id: cfg.formId,
+                    form_name: cfg.formName || "lead",
+                    page_path: location.pathname,
+                    page_url: location.href,
+                    lang: document.documentElement.lang || ""
+                });
+
+                form.reset();
+                statusEl.textContent = "✅ Sent! We'll contact you soon.";
+
+                if (cfg.closeModalOnSuccess) {
+                    setTimeout(() => {
+                        const modalEl = document.getElementById(cfg.modalId);
+                        if (modalEl && window.bootstrap) {
+                            const inst = bootstrap.Modal.getInstance(modalEl);
+                            if (inst) inst.hide();
+                        }
+                    }, 600);
+                }
+            } catch (err) {
+                statusEl.textContent = "❌ Sending failed. Please try again.";
+                console.error(err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = cfg.submitText || "Send an application";
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initLeadForm({
+            formId: "leadForm",
+            statusId: "formStatus",
+            submitId: "submitBtn",
+            nameId: "name",
+            phoneId: "phone",
+            tgId: "telegram",
+            wrapNameId: "wrapName",
+            wrapPhoneId: "wrapPhone",
+            wrapTgId: "wrapTg",
+            closeModalOnSuccess: false,
+            formName: "lead_bottom",
+            submitText: "Send an application"
+        });
+
+        initLeadForm({
+            formId: "leadForm_m",
+            statusId: "formStatus_m",
+            submitId: "submitBtn_m",
+            nameId: "name_m",
+            phoneId: "phone_m",
+            tgId: "telegram_m",
+            wrapNameId: "wrapName_m",
+            wrapPhoneId: "wrapPhone_m",
+            wrapTgId: "wrapTg_m",
+            closeModalOnSuccess: true,
+            modalId: "leadModal",
+            formName: "lead_modal",
+            submitText: "Send an application"
+        });
+
+        document.addEventListener("shown.bs.modal", function (e) {
+            if (e.target && e.target.id === "leadModal") {
+                const inp = document.getElementById("name_m");
+                if (inp) inp.focus();
+            }
+        });
+    });
+</script>
 <!-- End VK Pixel code (noscript) --> </body>
 </html>

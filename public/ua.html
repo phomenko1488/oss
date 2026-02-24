@@ -16151,6 +16151,14 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
     </div>
 </div>
 <script>
+    // ===== GTM helpers =====
+    window.dataLayer = window.dataLayer || [];
+    function gtmPush(eventName, payload) {
+        try {
+            window.dataLayer.push(Object.assign({event: eventName}, payload || {}));
+        } catch (e) {}
+    }
+
     // ===== helpers =====
     const byId = (id) => document.getElementById(id);
 
@@ -16204,6 +16212,24 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             console.warn(`[leadForm] Some elements not found for ${cfg.formId}, script not initialized.`);
             return;
         }
+
+        // ===== form_start (1 раз на форму) =====
+        let started = false;
+        const pushStart = () => {
+            if (started) return;
+            started = true;
+            gtmPush("form_start", {
+                form_id: cfg.formId,
+                form_name: cfg.formName || "lead",
+                page_path: location.pathname,
+                page_url: location.href,
+                lang: document.documentElement.lang || ""
+            });
+        };
+        [nameEl, phoneEl, tgEl].forEach((el) => {
+            el.addEventListener("focus", pushStart, {once: true});
+            el.addEventListener("input", pushStart, {once: true});
+        });
 
         phoneEl.addEventListener("blur", (e) => {
             e.target.value = formatPhoneUA(e.target.value);
@@ -16271,6 +16297,15 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 const data = await res.json();
                 if (!data.ok) throw new Error(data.description || "Telegram error");
 
+                // ✅ form_submit (только при успешной отправке)
+                gtmPush("form_submit", {
+                    form_id: cfg.formId,
+                    form_name: cfg.formName || "lead",
+                    page_path: location.pathname,
+                    page_url: location.href,
+                    lang: document.documentElement.lang || ""
+                });
+
                 form.reset();
                 statusEl.textContent = "✅ Заявку відправлено! Скоро напишемо.";
 
@@ -16289,7 +16324,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 console.error(err);
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = "Надіслати заявку";
+                submitBtn.textContent = cfg.submitText || "Надіслати заявку";
             }
         });
     }
@@ -16306,7 +16341,9 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             wrapNameId: "wrapName",
             wrapPhoneId: "wrapPhone",
             wrapTgId: "wrapTg",
-            closeModalOnSuccess: false
+            closeModalOnSuccess: false,
+            formName: "lead_bottom",
+            submitText: "Надіслати заявку"
         });
 
         // модалка
@@ -16321,7 +16358,9 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             wrapPhoneId: "wrapPhone_m",
             wrapTgId: "wrapTg_m",
             closeModalOnSuccess: true,
-            modalId: "leadModal"
+            modalId: "leadModal",
+            formName: "lead_modal",
+            submitText: "Надіслати заявку"
         });
 
         // фокус в модалке
