@@ -15248,14 +15248,25 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 submitBtn.disabled = true;
                 submitBtn.textContent = "Sending…";
 
-                const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                const res = await fetch("https://api.osplatform.space/api/leads", {
                     method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({chat_id: chatId, text: message})
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        phone: phone,
+                        telegram: telegram,
+                        courseName: courseName,
+                        courseCategory: courseCategory,
+                        formId: cfg.formId,
+                        formName: cfg.formName || "lead",
+                        pagePath: location.pathname,
+                        pageUrl: location.href,
+                        lang: document.documentElement.lang || ""
+                    })
                 });
-
-                const data = await res.json();
-                if (!data.ok) throw new Error(data.description || "Telegram error");
+                if (!res.ok) throw new Error("API error");
 
                 // ✅ form_submit (only on success)
                 gtmPush("form_submit", {
