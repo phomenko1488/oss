@@ -15154,6 +15154,50 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
         return /^[A-Za-z0-9_]{3,32}$/.test(username);
     }
 
+    // ===== UTM / attribution =====
+    function persistAttribution() {
+        const params = new URLSearchParams(window.location.search);
+        const utmKeys = [
+            "utm_source",
+            "utm_medium",
+            "utm_campaign",
+            "utm_term",
+            "utm_content"
+        ];
+
+        utmKeys.forEach((key) => {
+            const value = params.get(key);
+            if (value) {
+                localStorage.setItem(key, value);
+            }
+        });
+
+        if (!localStorage.getItem("first_referrer")) {
+            localStorage.setItem("first_referrer", document.referrer || "direct");
+        }
+
+        if (!localStorage.getItem("first_landing")) {
+            localStorage.setItem("first_landing", window.location.href);
+        }
+
+        if (!localStorage.getItem("landing_path")) {
+            localStorage.setItem("landing_path", window.location.pathname + window.location.search);
+        }
+    }
+
+    function getUTM() {
+        return {
+            utmSource: localStorage.getItem("utm_source") || "",
+            utmMedium: localStorage.getItem("utm_medium") || "",
+            utmCampaign: localStorage.getItem("utm_campaign") || "",
+            utmTerm: localStorage.getItem("utm_term") || "",
+            utmContent: localStorage.getItem("utm_content") || "",
+            firstReferrer: localStorage.getItem("first_referrer") || "",
+            firstLanding: localStorage.getItem("first_landing") || "",
+            landingPath: localStorage.getItem("landing_path") || ""
+        };
+    }
+
     function initLeadForm(cfg) {
         const form = byId(cfg.formId);
         const statusEl = byId(cfg.statusId);
@@ -15169,7 +15213,6 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             return;
         }
 
-        // ===== form_start (one-time per form) =====
         let started = false;
         const pushStart = () => {
             if (started) return;
@@ -15192,6 +15235,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
         phoneEl.addEventListener("blur", (e) => {
             e.target.value = formatPhoneUA(e.target.value);
         });
+
         tgEl.addEventListener("blur", (e) => {
             e.target.value = normalizeTelegram(e.target.value);
         });
@@ -15210,14 +15254,17 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             const telegram = normalizeTelegram(tgEl.value);
 
             let ok = true;
+
             if (!name) {
                 setInvalid(cfg.wrapNameId, true);
                 ok = false;
             }
+
             if (!isValidPhoneUA(phone)) {
                 setInvalid(cfg.wrapPhoneId, true);
                 ok = false;
             }
+
             if (!isValidTelegram(telegram)) {
                 setInvalid(cfg.wrapTgId, true);
                 ok = false;
@@ -15230,19 +15277,33 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
 
             phoneEl.value = phone;
             tgEl.value = telegram;
+
             const courseName = courseNameEl ? courseNameEl.value.trim() : "";
             const courseCategory = courseCategoryEl ? courseCategoryEl.value.trim() : "";
+            const attribution = getUTM();
 
-            const message = `🔥 New lead OS Platform
-
-👤 Name: ${name}
-📱 Phone: ${phone}
-💬 Telegram: ${telegram || "—"}
-📚 Курс: ${courseName || "Не вибрано"}
-🗂 Категорія: ${courseCategory || "—"}`.trim();
-
-            const botToken = "8412037294:AAFYyv3RwDNIaYOhMNQ2YD1arfCigLttnig";
-            const chatId = "-5293876405";
+            const payload = {
+                name: name,
+                phone: phone,
+                telegram: telegram,
+                courseName: courseName,
+                courseCategory: courseCategory,
+                formId: cfg.formId,
+                formName: cfg.formName || "lead",
+                pagePath: location.pathname,
+                pageUrl: location.href,
+                lang: document.documentElement.lang || "",
+                utmSource: attribution.utmSource,
+                utmMedium: attribution.utmMedium,
+                utmCampaign: attribution.utmCampaign,
+                utmTerm: attribution.utmTerm,
+                utmContent: attribution.utmContent,
+                firstReferrer: attribution.firstReferrer,
+                firstLanding: attribution.firstLanding,
+                landingPath: attribution.landingPath,
+                userAgent: navigator.userAgent,
+                screen: `${window.screen.width}x${window.screen.height}`
+            };
 
             try {
                 submitBtn.disabled = true;
@@ -15253,29 +15314,31 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        name: name,
-                        phone: phone,
-                        telegram: telegram,
-                        courseName: courseName,
-                        courseCategory: courseCategory,
-                        formId: cfg.formId,
-                        formName: cfg.formName || "lead",
-                        pagePath: location.pathname,
-                        pageUrl: location.href,
-                        lang: document.documentElement.lang || ""
-                    })
+                    body: JSON.stringify(payload)
                 });
-                if (!res.ok) throw new Error("API error");
 
-                // ✅ form_submit (only on success)
+                if (!res.ok) {
+                    let errorText = "API error";
+                    try {
+                        const errorData = await res.json();
+                        errorText = errorData.message || errorData.error || errorText;
+                    } catch (jsonErr) {
+                    }
+                    throw new Error(errorText);
+                }
+
                 gtmPush("form_submit", {
                     form_id: cfg.formId,
                     form_name: cfg.formName || "lead",
                     customer_phone: phone,
                     page_path: location.pathname,
                     page_url: location.href,
-                    lang: document.documentElement.lang || ""
+                    lang: document.documentElement.lang || "",
+                    utm_source: attribution.utmSource,
+                    utm_medium: attribution.utmMedium,
+                    utm_campaign: attribution.utmCampaign,
+                    utm_term: attribution.utmTerm,
+                    utm_content: attribution.utmContent
                 });
 
                 form.reset();
@@ -15292,7 +15355,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 }
             } catch (err) {
                 statusEl.textContent = "❌ Sending failed. Please try again.";
-                console.error(err);
+                console.error("[leadForm] submit error:", err);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = cfg.submitText || "Send an application";
@@ -15301,6 +15364,8 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+        persistAttribution();
+
         initLeadForm({
             formId: "leadForm",
             statusId: "formStatus",

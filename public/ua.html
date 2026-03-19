@@ -16197,7 +16197,6 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
         }
     }
 
-    // ===== helpers =====
     const byId = (id) => document.getElementById(id);
 
     function setInvalid(wrapId, isInvalid) {
@@ -16237,11 +16236,54 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
         return /^[A-Za-z0-9_]{3,32}$/.test(username);
     }
 
+    // ===== UTM / attribution =====
+    function persistAttribution() {
+        const params = new URLSearchParams(window.location.search);
+        const utmKeys = [
+            "utm_source",
+            "utm_medium",
+            "utm_campaign",
+            "utm_term",
+            "utm_content"
+        ];
+
+        utmKeys.forEach((key) => {
+            const value = params.get(key);
+            if (value) {
+                localStorage.setItem(key, value);
+            }
+        });
+
+        if (!localStorage.getItem("first_referrer")) {
+            localStorage.setItem("first_referrer", document.referrer || "direct");
+        }
+
+        if (!localStorage.getItem("first_landing")) {
+            localStorage.setItem("first_landing", window.location.href);
+        }
+
+        if (!localStorage.getItem("landing_path")) {
+            localStorage.setItem("landing_path", window.location.pathname + window.location.search);
+        }
+    }
+
+    function getUTM() {
+        return {
+            utmSource: localStorage.getItem("utm_source") || "",
+            utmMedium: localStorage.getItem("utm_medium") || "",
+            utmCampaign: localStorage.getItem("utm_campaign") || "",
+            utmTerm: localStorage.getItem("utm_term") || "",
+            utmContent: localStorage.getItem("utm_content") || "",
+            firstReferrer: localStorage.getItem("first_referrer") || "",
+            firstLanding: localStorage.getItem("first_landing") || "",
+            landingPath: localStorage.getItem("landing_path") || ""
+        };
+    }
+
     function initLeadForm(cfg) {
         const form = byId(cfg.formId);
         const statusEl = byId(cfg.statusId);
         const submitBtn = byId(cfg.submitId);
-
         const nameEl = byId(cfg.nameId);
         const phoneEl = byId(cfg.phoneId);
         const tgEl = byId(cfg.tgId);
@@ -16249,15 +16291,15 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
         const courseCategoryEl = byId(cfg.courseCategoryId);
 
         if (!form || !statusEl || !submitBtn || !nameEl || !phoneEl || !tgEl) {
-            console.warn(`[leadForm] Some elements not found for ${cfg.formId}, script not initialized.`);
+            console.warn(`[leadForm] Missing elements for ${cfg.formId}`);
             return;
         }
 
-        // ===== form_start (1 раз на форму) =====
         let started = false;
         const pushStart = () => {
             if (started) return;
             started = true;
+
             gtmPush("form_start", {
                 form_id: cfg.formId,
                 form_name: cfg.formName || "lead",
@@ -16266,6 +16308,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 lang: document.documentElement.lang || ""
             });
         };
+
         [nameEl, phoneEl, tgEl].forEach((el) => {
             el.addEventListener("focus", pushStart, {once: true});
             el.addEventListener("input", pushStart, {once: true});
@@ -16298,17 +16341,19 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 setInvalid(cfg.wrapNameId, true);
                 ok = false;
             }
+
             if (!isValidPhoneUA(phone)) {
                 setInvalid(cfg.wrapPhoneId, true);
                 ok = false;
             }
+
             if (!isValidTelegram(telegram)) {
                 setInvalid(cfg.wrapTgId, true);
                 ok = false;
             }
 
             if (!ok) {
-                statusEl.textContent = "Перевір поля вище 🙂";
+                statusEl.textContent = "Please check the fields above 🙂";
                 return;
             }
 
@@ -16317,56 +16362,70 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
 
             const courseName = courseNameEl ? courseNameEl.value.trim() : "";
             const courseCategory = courseCategoryEl ? courseCategoryEl.value.trim() : "";
+            const attribution = getUTM();
 
-            const message = `🔥 Нова заявка OS Platform
-
-👤 Ім'я: ${name}
-📱 Телефон: ${phone}
-💬 Telegram: ${telegram || "—"}
-📚 Курс: ${courseName || "Не вибрано"}
-🗂 Категорія: ${courseCategory || "—"}`.trim();
-
-            const botToken = "8412037294:AAFYyv3RwDNIaYOhMNQ2YD1arfCigLttnig";
-            const chatId = "-5293876405";
+            const payload = {
+                name: name,
+                phone: phone,
+                telegram: telegram,
+                courseName: courseName,
+                courseCategory: courseCategory,
+                formId: cfg.formId,
+                formName: cfg.formName || "lead",
+                pagePath: location.pathname,
+                pageUrl: location.href,
+                lang: document.documentElement.lang || "",
+                utmSource: attribution.utmSource,
+                utmMedium: attribution.utmMedium,
+                utmCampaign: attribution.utmCampaign,
+                utmTerm: attribution.utmTerm,
+                utmContent: attribution.utmContent,
+                firstReferrer: attribution.firstReferrer,
+                firstLanding: attribution.firstLanding,
+                landingPath: attribution.landingPath,
+                userAgent: navigator.userAgent,
+                screen: `${window.screen.width}x${window.screen.height}`
+            };
 
             try {
                 submitBtn.disabled = true;
-                submitBtn.textContent = "Відправляємо…";
+                submitBtn.textContent = "Sending…";
 
                 const res = await fetch("https://api.osplatform.space/api/leads", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        name: name,
-                        phone: phone,
-                        telegram: telegram,
-                        courseName: courseName,
-                        courseCategory: courseCategory,
-                        formId: cfg.formId,
-                        formName: cfg.formName || "lead",
-                        pagePath: location.pathname,
-                        pageUrl: location.href,
-                        lang: document.documentElement.lang || ""
-                    })
+                    body: JSON.stringify(payload)
                 });
-                if (!res.ok) throw new Error("API error");
 
-                // ✅ form_submit (только при успешной отправке)
+                if (!res.ok) {
+                    let errorText = "API error";
+                    try {
+                        const errorData = await res.json();
+                        errorText = errorData.message || errorData.error || errorText;
+                    } catch (jsonErr) {
+                    }
+                    throw new Error(errorText);
+                }
+
                 gtmPush("form_submit", {
                     form_id: cfg.formId,
                     form_name: cfg.formName || "lead",
                     customer_phone: phone,
                     page_path: location.pathname,
                     page_url: location.href,
-                    lang: document.documentElement.lang || ""
+                    lang: document.documentElement.lang || "",
+                    utm_source: attribution.utmSource,
+                    utm_medium: attribution.utmMedium,
+                    utm_campaign: attribution.utmCampaign,
+                    utm_term: attribution.utmTerm,
+                    utm_content: attribution.utmContent
                 });
 
                 form.reset();
-                statusEl.textContent = "✅ Заявку відправлено! Скоро напишемо.";
+                statusEl.textContent = "✅ Sent! We'll contact you soon.";
 
-                // закрыть модалку если надо
                 if (cfg.closeModalOnSuccess) {
                     setTimeout(() => {
                         const modalEl = document.getElementById(cfg.modalId);
@@ -16377,17 +16436,18 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                     }, 600);
                 }
             } catch (err) {
-                statusEl.textContent = "❌ Помилка відправки. Спробуй ще раз або напиши нам в Telegram.";
-                console.error(err);
+                statusEl.textContent = "❌ Sending failed. Please try again.";
+                console.error("[leadForm] submit error:", err);
             } finally {
                 submitBtn.disabled = false;
-                submitBtn.textContent = cfg.submitText || "Надіслати заявку";
+                submitBtn.textContent = cfg.submitText || "Send an application";
             }
         });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        // нижняя форма
+        persistAttribution();
+
         initLeadForm({
             formId: "leadForm",
             statusId: "formStatus",
@@ -16405,7 +16465,6 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             submitText: "Надіслати заявку"
         });
 
-        // модалка
         initLeadForm({
             formId: "leadForm_m",
             statusId: "formStatus_m",
@@ -16423,10 +16482,10 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             formName: "lead_modal",
             submitText: "Надіслати заявку"
         });
-        // фокус в модалке
-        document.addEventListener('shown.bs.modal', function (e) {
-            if (e.target && e.target.id === 'leadModal') {
-                const inp = document.getElementById('name_m');
+
+        document.addEventListener("shown.bs.modal", function (e) {
+            if (e.target && e.target.id === "leadModal") {
+                const inp = document.getElementById("name_m");
                 if (inp) inp.focus();
             }
         });
