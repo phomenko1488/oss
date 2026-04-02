@@ -16,6 +16,23 @@
         f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-M46SBFNP');</script>
     <!-- End Google Tag Manager -->
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1321014000006088');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1321014000006088&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <meta charset="utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!--metatextblock--> <title>Онлайн курсы
@@ -16187,7 +16204,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
     </div>
 </div>
 <script>
-    // ===== GTM helpers =====
+    // ===== GTM & Meta helpers =====
     window.dataLayer = window.dataLayer || [];
 
     function gtmPush(eventName, payload) {
@@ -16195,6 +16212,13 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             window.dataLayer.push(Object.assign({event: eventName}, payload || {}));
         } catch (e) {
         }
+    }
+
+    // 1. Функція генерації унікального event_id для дедуплікації подій Meta
+    function generateEventId() {
+        return typeof crypto !== 'undefined' && crypto.randomUUID
+            ? crypto.randomUUID()
+            : 'evt_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
     }
 
     const byId = (id) => document.getElementById(id);
@@ -16364,6 +16388,9 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
             const courseCategory = courseCategoryEl ? courseCategoryEl.value.trim() : "";
             const attribution = getUTM();
 
+            // 2. Генеруємо унікальний ID події під час успішного сабміту
+            const metaEventId = generateEventId();
+
             const payload = {
                 name: name,
                 phone: phone,
@@ -16384,8 +16411,12 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                 firstLanding: attribution.firstLanding,
                 landingPath: attribution.landingPath,
                 userAgent: navigator.userAgent,
-                screen: `${window.screen.width}x${window.screen.height}`
+                screen: `${window.screen.width}x${window.screen.height}`,
+
+                // 3. Відправляємо eventId на ваш бекенд
+                eventId: metaEventId
             };
+
             try {
                 submitBtn.disabled = true;
                 submitBtn.textContent = "Sending…";
@@ -16408,6 +16439,7 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                     throw new Error(errorText);
                 }
 
+                // Відправка в GTM
                 gtmPush("form_submit", {
                     form_id: cfg.formId,
                     form_name: cfg.formName || "lead",
@@ -16421,6 +16453,11 @@ t-form__inputsbox_vertical-form t-form__inputsbox_inrow ">
                     utm_term: attribution.utmTerm,
                     utm_content: attribution.utmContent
                 });
+
+                // 4. Відправка події Lead у Meta Pixel з тим самим eventID
+                if (typeof fbq === 'function') {
+                    fbq('track', 'Lead', {}, { eventID: metaEventId });
+                }
 
                 form.reset();
                 statusEl.textContent = "✅ Sent! We'll contact you soon.";
